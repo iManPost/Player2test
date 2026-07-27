@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MOV PLAYER</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+  <script>
+/* ==========================
+   ข้อมูลต้นฉบับ
+========================== */
+
+const PORTAL_URL = "https://";
+const MAC_ADDRESS = "00:11:22:33:44:55";
+
+/* ==========================
+   Base64
+========================== */
+
+const URL_BASE64 = "YUhSMGNEb3ZMMmx0WVc1d2IzTjBMbWRwZEdoMVlpNXBieTlwY0hSMmJtVjMv";
+const MAC_BASE64 = "MDA6MTE6MjI6MzM6NDQ6NTU=";
+
+/* ==========================
+   ถอดรหัส
+========================== */
+
+const CONFIG = {
+    p: atob(URL_BASE64),
+    m: atob(MAC_BASE64)
+};
+
+/* ==========================
+   ปิดคลิกขวา
+========================== */
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+    return false;
+});
+
+/* ==========================
+   ปิด F12 / DevTools Shortcut
+========================== */
+
+document.addEventListener("keydown", function(e){
+
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey &&
+            ["I","J","C"].includes(e.key.toUpperCase())
+        ) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U")
+    ){
+        e.preventDefault();
+        return false;
+    }
+
+});
+
+/* ==========================
+   ปิดลากรูป
+========================== */
+
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
+
+/* ==========================
+   ปิดเลือกข้อความ
+========================== */
+
+document.addEventListener("selectstart", function(e){
+    e.preventDefault();
+});
+
+/* ==========================
+   ตรวจ DevTools
+========================== */
+
+setInterval(function(){
+
+    const widthThreshold =
+        window.outerWidth - window.innerWidth > 160;
+
+    const heightThreshold =
+        window.outerHeight - window.innerHeight > 160;
+
+    if(widthThreshold || heightThreshold){
+
+        document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-size:24px;
+            font-family:sans-serif;">
+            Access Denied
+        </div>`;
+    }
+
+},1000);
+</script> 
+<style>
+:root{
+  --bg:#0b0c10;
+  --panel:#15171c;
+  --panel2:#1d2027;
+  --accent:#ff3b30;
+  --accent2:#ffb020;
+  --text:#f2f2f2;
+  --muted:#8c92a0;
+  --focus:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+  height:100%;
+  overflow-x:hidden;
+}
+body{display:flex;flex-direction:column;min-height:100vh;}
+
+/* ===== HEADER / SLIDER ===== */
+.hero{
+  position:relative;
+  width:100%;
+  height:42vh;
+  min-height:220px;
+  max-height:480px;
+  overflow:hidden;
+  background:#000;
+}
+.hero-track{
+  display:flex;
+  height:100%;
+  transition:transform .5s ease;
+  will-change:transform;
+}
+.hero-slide{
+  position:relative;
+  flex:0 0 100%;
+  height:100%;
+  background-size:cover;
+  background-position:center top;
+  cursor:pointer;
+}
+.hero-slide::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(11,12,16,1) 0%, rgba(11,12,16,0.55) 35%, rgba(11,12,16,0) 70%),
+             linear-gradient(to right, rgba(11,12,16,0.6) 0%, rgba(11,12,16,0) 40%);
+}
+.hero-info{
+  position:absolute;
+  left:24px; right:24px; bottom:18px;
+  z-index:2;
+}
+.hero-tag{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.05em;
+  padding:3px 10px;
+  border-radius:4px;
+  margin-bottom:8px;
+}
+.hero-title{
+  font-size:clamp(18px,4vw,32px);
+  font-weight:800;
+  text-shadow:0 2px 8px rgba(0,0,0,.8);
+  max-width:80%;
+}
+.hero-dots{
+  position:absolute;
+  right:18px; bottom:18px;
+  display:flex; gap:6px; z-index:3;
+}
+.hero-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.35);
+  cursor:pointer;
+  transition:.25s;
+}
+.hero-dot.active{background:var(--accent2);width:22px;border-radius:5px;}
+.hero-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:3;
+  opacity:0;transition:.2s;
+}
+.hero:hover .hero-nav{opacity:1;}
+.hero-nav.prev{left:14px;}
+.hero-nav.next{right:14px;}
+
+/* ===== TOP BAR ===== */
+.topbar{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 18px;
+  background:var(--panel);
+  border-bottom:1px solid #23262e;
+  position:sticky;top:0;z-index:50;
+}
+.brand{font-weight:800;font-size:18px;letter-spacing:.03em;color:var(--accent2);white-space:nowrap;}
+.search-box{
+  flex:1;max-width:420px;
+  display:flex;align-items:center;
+  background:var(--panel2);
+  border:1px solid #2a2e38;
+  border-radius:8px;
+  padding:8px 12px;
+}
+.search-box input{
+  background:transparent;border:none;outline:none;
+  color:var(--text);width:100%;font-size:14px;
+}
+.search-box input::placeholder{color:var(--muted);}
+.menu-toggle{
+  display:none;
+  background:var(--panel2);
+  border:1px solid #2a2e38;
+  color:var(--text);
+  border-radius:8px;
+  padding:8px 12px;
+  cursor:pointer;
+}
+
+/* ===== LAYOUT ===== */
+.layout{
+  display:flex;
+  flex:1;
+  min-height:0;
+}
+.sidebar{
+  width:230px;
+  flex-shrink:0;
+  background:var(--panel);
+  border-right:1px solid #23262e;
+  overflow-y:auto;
+  padding:14px 0;
+  max-height:calc(100vh - 64px);
+  position:sticky;
+  top:64px;
+}
+.sidebar h3{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  padding:6px 18px 10px;
+}
+.cat-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 18px;
+  cursor:pointer;
+  color:var(--muted);
+  font-size:14.5px;
+  border-left:3px solid transparent;
+  transition:.15s;
+}
+.cat-item:hover, .cat-item.focused{
+  background:var(--panel2);
+  color:var(--text);
+}
+.cat-item.active{
+  border-left-color:var(--accent);
+  color:var(--accent2);
+  background:var(--panel2);
+  font-weight:600;
+}
+.cat-count{
+  font-size:11.5px;
+  background:#262a33;
+  color:var(--muted);
+  border-radius:10px;
+  padding:1px 8px;
+}
+
+.main{
+  flex:1;
+  min-width:0;
+  padding:20px;
+  overflow-y:auto;
+}
+.section-title{
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title .pill{
+  width:5px;height:18px;background:var(--accent);border-radius:3px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:16px;
+}
+.card{
+  background:var(--panel2);
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:transform .15s, border-color .15s, box-shadow .15s;
+  position:relative;
+}
+.card:hover, .card.focused{
+  transform:translateY(-4px) scale(1.02);
+  border-color:var(--accent2);
+  box-shadow:0 8px 22px rgba(0,0,0,.5);
+  z-index:2;
+}
+.card .thumb-wrap{
+  width:100%;aspect-ratio:2/3;
+  background:#000;
+  overflow:hidden;
+}
+.card img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+.card .play-badge{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:.2s;
+  color:#fff;font-size:16px;
+}
+.card:hover .play-badge,.card.focused .play-badge{opacity:1;}
+.card .title{
+  padding:9px 10px 11px;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+.empty{
+  color:var(--muted);
+  padding:40px 0;
+  text-align:center;
+}
+
+/* ===== PLAYER MODAL ===== */
+.player-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.92);
+  z-index:200;
+  align-items:center;justify-content:center;
+  flex-direction:column;
+}
+.player-overlay.open{display:flex;}
+.player-box{
+  width:100%;
+  max-width:860px;
+  background:#000;
+  position:relative;
+}
+.video-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+}
+video{width:100%;height:100%;background:#000;}
+
+/* ===== FAKE FULLSCREEN FALLBACK (for boxes without a working Fullscreen API) ===== */
+.video-wrap.fake-fullscreen{
+  position:fixed;
+  inset:0;
+  width:100vw;height:100vh;
+  z-index:500;
+  aspect-ratio:unset;
+}
+.video-wrap.fake-fullscreen video{object-fit:contain;}
+body.fake-fs-active .player-header{display:none;}
+body.fake-fs-active .player-box{max-width:none;width:100vw;}
+
+.player-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;
+  background:#0d0e12;
+  width:100%;max-width:1100px;
+}
+.player-title{font-weight:700;font-size:15px;}
+.close-btn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--accent);
+  border:none;
+  color:#fff;
+  border-radius:20px;
+  padding:7px 16px;
+  cursor:pointer;
+  font-size:13.5px;
+  font-weight:600;
+  transition:.15s;
+}
+.close-btn svg{width:13px;height:13px;fill:#fff;}
+.close-btn:hover,.close-btn.focused{background:#e5352b;}
+
+/* ===== CUSTOM VIDEO CONTROLS ===== */
+.custom-controls{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  z-index:6;
+  background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,0) 100%);
+  padding:18px 12px 8px;
+  opacity:1;
+  transition:opacity .3s ease;
+}
+.custom-controls.hidden-idle{
+  opacity:0;
+  pointer-events:none;
+}
+.progress-bar{
+  width:100%;height:4px;
+  background:rgba(255,255,255,.28);
+  border-radius:3px;
+  cursor:pointer;
+  margin-bottom:9px;
+  position:relative;
+}
+.progress-filled{
+  height:100%;width:0%;
+  background:var(--accent);
+  border-radius:3px;
+  pointer-events:none;
+}
+.progress-bar::before{
+  content:"";
+  position:absolute;top:-6px;bottom:-6px;left:0;right:0;
+}
+.controls-row{
+  display:flex;align-items:center;gap:4px;
+}
+.ctrl-btn{
+  background:transparent;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  width:26px;height:26px;
+  min-width:26px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:6px;
+  padding:0;
+  transition:.15s;
+}
+.ctrl-btn svg{width:15px;height:15px;fill:#fff;display:block;}
+.ctrl-btn:hover,.ctrl-btn.focused{background:rgba(255,255,255,.18);}
+.time-display{
+  color:#e6e6e6;
+  font-size:11.5px;
+  white-space:nowrap;
+  margin-left:4px;
+  font-variant-numeric:tabular-nums;
+}
+.controls-spacer{flex:1;}
+.quality-wrap{position:relative;}
+.quality-btn{width:auto;min-width:26px;padding:0 6px;gap:4px;}
+.quality-label{font-size:11px;font-weight:600;color:#fff;white-space:nowrap;}
+.quality-menu{
+  display:none;
+  position:absolute;
+  bottom:34px;right:0;
+  background:#1a1c22;
+  border:1px solid #2f3340;
+  border-radius:8px;
+  overflow:hidden;
+  min-width:110px;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+  z-index:10;
+}
+.quality-menu.open{display:block;}
+.quality-item{
+  padding:9px 14px;
+  font-size:12.5px;
+  color:#e6e6e6;
+  cursor:pointer;
+  white-space:nowrap;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;
+}
+.quality-item:hover,.quality-item.focused{background:rgba(255,255,255,.1);}
+.quality-item.active{color:var(--accent2);font-weight:700;}
+.loading{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:14px;
+  background:rgba(0,0,0,.4);
+}
+.spinner{
+  width:34px;height:34px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.2);
+  border-top-color:var(--accent2);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ===== TV / REMOTE focus ring ===== */
+.tv-mode .card.focused, .tv-mode .cat-item.focused, .tv-mode .close-btn.focused, .tv-mode .hero-dot.focused, .tv-mode .ctrl-btn.focused, .tv-mode .quality-item.focused{
+  outline:3px solid var(--focus);
+  outline-offset:2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px){
+  .sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;bottom:0;
+    height:100%;
+    max-height:100%;
+    z-index:80;
+    transition:left .25s;
+    box-shadow:4px 0 18px rgba(0,0,0,.5);
+  }
+  .sidebar.open{left:0;}
+  .menu-toggle{display:block;}
+  .overlay-dim{
+    display:none;
+    position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:70;
+  }
+  .overlay-dim.open{display:block;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
+  .hero{height:32vh;min-height:170px;}
+  .hero-title{max-width:100%;}
+}
+
+/* Landscape phone */
+@media (max-width:900px) and (orientation:landscape){
+  .hero{height:60vh;}
+}
+
+/* Portrait small */
+@media (max-width:480px){
+  .brand{font-size:15px;}
+  .search-box{max-width:140px;}
+  .player-header{padding:8px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="brand">🎬DE&nbsp;PLAY</div>
+  <div class="search-box">
+    <input id="searchInput" type="text" placeholder="ค้นหาชื่อเรื่อง...">
+  </div>
+</div>
+
+<div class="hero" id="hero">
+  <div class="hero-track" id="heroTrack"></div>
+  <div class="hero-nav prev" id="heroPrev">‹</div>
+  <div class="hero-nav next" id="heroNext">›</div>
+  <div class="hero-dots" id="heroDots"></div>
+</div>
+
+<div class="overlay-dim" id="overlayDim"></div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar">
+    <h3>หมวดหมู่</h3>
+    <div id="catList"></div>
+  </div>
+
+  <div class="main">
+    <div class="section-title"><span class="pill"></span><span id="sectionLabel">ทั้งหมด</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="emptyMsg" style="display:none;">ไม่พบรายการ</div>
+    <div id="gridSentinel" style="height:1px;"></div>
+    <div id="gridLoading" style="display:none;text-align:center;padding:20px;color:#888;font-size:14px;">กำลังโหลดเพิ่ม...</div>
+  </div>
+</div>
+
+<div class="player-overlay" id="playerOverlay">
+  <div class="player-header" id="playerHeader">
+    <div class="player-title" id="playerTitle">-</div>
+    <button class="close-btn" id="closeBtn">
+      <svg viewBox="0 0 24 24"><path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/></svg>
+      ปิด
+    </button>
+  </div>
+  <div class="player-box">
+    <div class="video-wrap" id="videoWrap">
+      <video id="video" playsinline autoplay></video>
+      <div class="loading" id="loadingEl"><div class="spinner"></div></div>
+
+      <div class="custom-controls" id="customControls">
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-filled" id="progressFilled"></div>
+        </div>
+        <div class="controls-row">
+          <button class="ctrl-btn" id="playPauseBtn" title="เล่น/หยุด">
+            <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button class="ctrl-btn" id="rewindBtn" title="ถอยหลัง 10 วินาที">
+            <svg viewBox="0 0 24 24"><path d="M20 6v12l-8.5-6L20 6zm-9 0v12L2.5 12 11 6z"/></svg>
+          </button>
+          <button class="ctrl-btn" id="forwardBtn" title="เดินหน้า 10 วินาที">
+            <svg viewBox="0 0 24 24"><path d="M4 18V6l8.5 6L4 18zm9 0V6l8.5 6L13 18z"/></svg>
+          </button>
+          <button class="ctrl-btn" id="muteBtn" title="ปิด/เปิดเสียง">
+            <svg id="volumeIcon" viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3z"/></svg>
+          </button>
+          <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+          <div class="controls-spacer"></div>
+          <div class="quality-wrap" id="qualityWrap">
+            <button class="ctrl-btn quality-btn" id="qualityBtn" title="ความละเอียดวีดีโอ">
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.86 9.42a.5.5 0 0 0 .12.64l2.03 1.58c-.05.3-.08.62-.08.94s.02.64.07.94L3 14.5a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.42.34.68.22l2.39-.96c.5.38 1.04.7 1.62.94l.36 2.54c.05.24.25.42.5.42h3.84c.25 0 .45-.18.5-.42l.36-2.54c.58-.24 1.12-.56 1.62-.94l2.39.96c.26.1.54 0 .68-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+              <span class="quality-label" id="qualityLabel">Auto</span>
+            </button>
+            <div class="quality-menu" id="qualityMenu"></div>
+          </div>
+          <button class="ctrl-btn" id="fullscreenBtn" title="เต็มจอ">
+            <svg id="fullscreenIcon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+// ───────────────────────── DATA ─────────────────────────
+const REFERRER = 'https://9.9nung.com/';
+// ดึงข้อมูลจากไฟล์ข้อมูลหนัง/ซีรีย์หลายไฟล์ เข้ามารวมกันในตัวแปร items
+import { movies } from './data/movies.js';
+import { series } from './data/series.js';
+import { netflixMovies } from './data/netflix.js';
+import { anime } from './data/anime.js';
+import { comedy } from './data/comedy.js';  
+const items = [...movies, ...series, ...netflixMovies, ...anime, ...comedy];
+  
+
+// ───────────────────────── STATE ─────────────────────────
+let currentGroup = 'ทั้งหมด';
+let searchTerm = '';
+let hls = null;
+let heroIndex = 0;
+let heroTimer = null;
+
+const groups = ['ทั้งหมด', ...Array.from(new Set(items.map(i => i.group)))];
+
+// ───────────────────────── HERO SLIDER (newest movies) ─────────────────────────
+function buildHero(){
+  // featured = newest category items (หนังใหม่2026 first, fallback to all) — จำกัดแค่ 7 เรื่อง
+  let featured = items.filter(i => /2026|2025/.test(i.group)).slice(0, 10);
+  if(featured.length === 0) featured = items.slice(0, 10);
+
+  const track = document.getElementById('heroTrack');
+  const dots = document.getElementById('heroDots');
+  track.innerHTML = '';
+  dots.innerHTML = '';
+
+  featured.forEach((it, idx) => {
+    const slide = document.createElement('div');
+    slide.className = 'hero-slide';
+    slide.style.backgroundImage = `url('${it.logo}')`;
+    slide.tabIndex = 0;
+    slide.addEventListener('click', () => openPlayer(it));
+    slide.innerHTML = `<div class="hero-info">
+        <span class="hero-tag">${it.group}</span>
+        <div class="hero-title">${it.name}</div>
+      </div>`;
+    track.appendChild(slide);
+
+    const dot = document.createElement('div');
+    dot.className = 'hero-dot' + (idx === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goHero(idx));
+    dots.appendChild(dot);
+  });
+
+  document.getElementById('heroPrev').onclick = () => goHero(heroIndex - 1);
+  document.getElementById('heroNext').onclick = () => goHero(heroIndex + 1);
+
+  goHero(0);
+  resetHeroTimer();
+}
+
+function goHero(idx){
+  const track = document.getElementById('heroTrack');
+  const slides = track.children;
+  if(slides.length === 0) return;
+  heroIndex = (idx + slides.length) % slides.length;
+  track.style.transform = `translateX(-${heroIndex * 100}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === heroIndex));
+  resetHeroTimer();
+}
+
+function resetHeroTimer(){
+  if(heroTimer) clearInterval(heroTimer);
+  heroTimer = setInterval(() => goHero(heroIndex + 1), 5000);
+}
+
+// ───────────────────────── SIDEBAR / CATEGORIES ─────────────────────────
+function buildSidebar(){
+  const list = document.getElementById('catList');
+  list.innerHTML = '';
+  groups.forEach(g => {
+    const count = g === 'ทั้งหมด' ? items.length : items.filter(i => i.group === g).length;
+    const el = document.createElement('div');
+    el.className = 'cat-item' + (g === currentGroup ? ' active' : '');
+    el.dataset.group = g;
+    el.tabIndex = 0;
+    el.innerHTML = `<span>${g}</span><span class="cat-count">${count}</span>`;
+    el.addEventListener('click', () => selectGroup(g));
+    list.appendChild(el);
+  });
+}
+
+function selectGroup(g){
+  currentGroup = g;
+  document.getElementById('sectionLabel').textContent = g;
+  document.querySelectorAll('.cat-item').forEach(el => el.classList.toggle('active', el.dataset.group === g));
+  buildGrid();
+  closeSidebarMobile();
+}
+
+// ───────────────────────── GRID ─────────────────────────
+// ───────────────────────── GRID (infinite scroll) ─────────────────────────
+const GRID_BATCH_SIZE = 40;
+let currentFilteredList = [];
+let renderedCount = 0;
+let gridObserver = null;
+
+function createCard(it){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.tabIndex = 0;
+  card.innerHTML = `
+    <div class="thumb-wrap"><img src="${it.logo}" loading="lazy" alt="${it.name}"></div>
+    <div class="play-badge">▶</div>
+    <div class="title">${it.name}</div>
+  `;
+  card.addEventListener('click', () => openPlayer(it));
+  card.addEventListener('keydown', e => {
+    if(e.key === 'Enter') openPlayer(it);
+  });
+  return card;
+}
+
+function renderNextBatch(){
+  const grid = document.getElementById('grid');
+  const loadingEl = document.getElementById('gridLoading');
+  const nextItems = currentFilteredList.slice(renderedCount, renderedCount + GRID_BATCH_SIZE);
+  if(nextItems.length === 0){
+    if(loadingEl) loadingEl.style.display = 'none';
+    return;
+  }
+  const fragment = document.createDocumentFragment();
+  nextItems.forEach(it => fragment.appendChild(createCard(it)));
+  grid.appendChild(fragment);
+  renderedCount += nextItems.length;
+  refreshFocusables();
+
+  if(loadingEl){
+    loadingEl.style.display = renderedCount < currentFilteredList.length ? 'block' : 'none';
+  }
+}
+
+function buildGrid(){
+  const grid = document.getElementById('grid');
+  const emptyMsg = document.getElementById('emptyMsg');
+  const loadingEl = document.getElementById('gridLoading');
+  grid.innerHTML = '';
+  renderedCount = 0;
+
+  let list = items;
+  if(currentGroup !== 'ทั้งหมด') list = list.filter(i => i.group === currentGroup);
+  if(searchTerm.trim()) {
+    const q = searchTerm.trim().toLowerCase();
+    list = list.filter(i => i.name.toLowerCase().includes(q));
+  }
+  currentFilteredList = list;
+
+  if(list.length === 0){
+    emptyMsg.style.display = 'block';
+    if(loadingEl) loadingEl.style.display = 'none';
+    return;
+  }
+  emptyMsg.style.display = 'none';
+
+  renderNextBatch();
+
+  // ตั้งค่า IntersectionObserver แค่ครั้งเดียว ให้คอยจับ sentinel เพื่อโหลดเพิ่มอัตโนมัติ
+  if(!gridObserver){
+    const sentinel = document.getElementById('gridSentinel');
+    gridObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) renderNextBatch();
+      });
+    }, { rootMargin: '300px' });
+    gridObserver.observe(sentinel);
+  }
+}
+
+// ───────────────────────── SEARCH ─────────────────────────
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  buildGrid();
+});
+
+// ───────────────────────── PLAYER (HLS.js with JW-style controls fallback) ─────────────────────────
+const video = document.getElementById('video');
+const playerOverlay = document.getElementById('playerOverlay');
+const loadingEl = document.getElementById('loadingEl');
+
+function openPlayer(item){
+  document.getElementById('playerTitle').textContent = item.name;
+  playerOverlay.classList.add('open');
+  loadingEl.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  destroyHls();
+
+  const url = item.url;
+
+  resetQualityUI();
+
+  if (Hls.isSupported()) {
+    hls = new Hls({
+      xhrSetup: function(xhr){
+        // referrer hint via custom header where supported by CDN proxies
+        try { xhr.setRequestHeader('Referer', REFERRER); } catch(e){}
+      },
+      maxBufferLength: 30
+    });
+    hls.loadSource(url);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      loadingEl.style.display = 'none';
+      video.play().catch(()=>{});
+      buildQualityMenu();
+    });
+    hls.on(Hls.Events.LEVEL_SWITCHED, (event, data) => {
+      updateQualityLabel(data.level);
+    });
+    hls.on(Hls.Events.ERROR, (event, data) => {
+      if (data.fatal) {
+        // กล่องแอนดรอยรุ่นเก่าบางรุ่นมี MediaSource Extensions (MSE) ที่ไม่สมบูรณ์
+        // ทำให้ hls.js ใช้งานไม่ได้ ให้ลองเปลี่ยนไปเล่นแบบ native <video src> แทน
+        // ซึ่งอาศัย media pipeline ของระบบปฏิบัติการ (มักรองรับ HLS ได้ดีกว่าบนอุปกรณ์เก่า)
+        if (!video.dataset.fallbackTried) {
+          video.dataset.fallbackTried = '1';
+          hls.destroy();
+          hls = null;
+          qualityWrap.style.display = 'none';
+          video.src = url;
+          video.addEventListener('loadedmetadata', () => {
+            loadingEl.style.display = 'none';
+            video.play().catch(()=>{});
+          }, { once:true });
+          video.addEventListener('error', () => {
+            loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">โหลดวิดีโอไม่สำเร็จ ลองใหม่อีกครั้ง</div>';
+          }, { once:true });
+        } else {
+          loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">โหลดวิดีโอไม่สำเร็จ ลองใหม่อีกครั้ง</div>';
+        }
+      }
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    // Native HLS (Safari / some Android TV browsers) — manual quality
+    // switching isn't exposed here, so hide the resolution control.
+    qualityWrap.style.display = 'none';
+    video.src = url;
+    video.addEventListener('loadedmetadata', () => {
+      loadingEl.style.display = 'none';
+      video.play().catch(()=>{});
+    }, { once:true });
+  } else {
+    loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">เบราว์เซอร์นี้ไม่รองรับ HLS</div>';
+  }
+
+  setFocus(document.getElementById('closeBtn'));
+}
+
+function destroyHls(){
+  if (hls) { hls.destroy(); hls = null; }
+  video.removeAttribute('src');
+  delete video.dataset.fallbackTried;
+  video.load();
+}
+
+function closePlayer(){
+  destroyHls();
+  resetQualityUI();
+  if(videoWrap.classList.contains('fake-fullscreen')){
+    videoWrap.classList.remove('fake-fullscreen');
+    document.body.classList.remove('fake-fs-active');
+  }
+  exitRealFullscreen();
+  playerOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('closeBtn').addEventListener('click', closePlayer);
+playerOverlay.addEventListener('click', e => { if(e.target === playerOverlay) closePlayer(); });
+
+// ───────────────────────── CUSTOM VIDEO CONTROLS ─────────────────────────
+const videoWrap = document.getElementById('videoWrap');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const playIcon = document.getElementById('playIcon');
+const rewindBtn = document.getElementById('rewindBtn');
+const forwardBtn = document.getElementById('forwardBtn');
+const muteBtn = document.getElementById('muteBtn');
+const volumeIcon = document.getElementById('volumeIcon');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+const fullscreenIcon = document.getElementById('fullscreenIcon');
+const qualityWrap = document.getElementById('qualityWrap');
+const qualityBtn = document.getElementById('qualityBtn');
+const qualityLabel = document.getElementById('qualityLabel');
+const qualityMenu = document.getElementById('qualityMenu');
+const progressBar = document.getElementById('progressBar');
+const progressFilled = document.getElementById('progressFilled');
+const timeDisplay = document.getElementById('timeDisplay');
+
+const ICON_PLAY = '<path d="M8 5v14l11-7z"/>';
+const ICON_PAUSE = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+const ICON_VOLUME = '<path d="M3 10v4h4l5 5V5L7 10H3z"/>';
+const ICON_MUTE = '<path d="M3 10v4h4l5 5V5L7 10H3zm13.59 4L14 11.41 11.41 14 10 12.59 12.59 10 10 7.41 11.41 6 14 8.59 16.59 6 18 7.41 15.41 10 18 12.59z"/>';
+const ICON_FULLSCREEN = '<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>';
+const ICON_FULLSCREEN_EXIT = '<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>';
+
+function formatTime(sec){
+  if(!isFinite(sec) || sec < 0) return '0:00';
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
+playPauseBtn.addEventListener('click', () => {
+  if(video.paused) video.play().catch(()=>{});
+  else video.pause();
+});
+video.addEventListener('play', () => { playIcon.innerHTML = ICON_PAUSE; });
+video.addEventListener('pause', () => { playIcon.innerHTML = ICON_PLAY; });
+
+rewindBtn.addEventListener('click', () => {
+  video.currentTime = Math.max(0, video.currentTime - 10);
+});
+forwardBtn.addEventListener('click', () => {
+  video.currentTime = Math.min(video.duration || video.currentTime + 10, video.currentTime + 10);
+});
+
+muteBtn.addEventListener('click', () => {
+  video.muted = !video.muted;
+  volumeIcon.innerHTML = video.muted ? ICON_MUTE : ICON_VOLUME;
+});
+
+function isRealFullscreenActive(){
+  return !!(document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function requestRealFullscreen(el){
+  const fn = el.requestFullscreen || el.webkitRequestFullscreen ||
+             el.webkitRequestFullScreen || el.mozRequestFullScreen ||
+             el.msRequestFullscreen;
+  if(!fn) return Promise.reject(new Error('no fullscreen api'));
+  try{
+    const result = fn.call(el);
+    return result && typeof result.then === 'function' ? result : Promise.resolve();
+  }catch(err){
+    return Promise.reject(err);
+  }
+}
+
+function exitRealFullscreen(){
+  const fn = document.exitFullscreen || document.webkitExitFullscreen ||
+             document.webkitCancelFullScreen || document.mozCancelFullScreen ||
+             document.msExitFullscreen;
+  if(fn) { try{ fn.call(document); }catch(err){} }
+}
+
+function enterFakeFullscreen(){
+  videoWrap.classList.add('fake-fullscreen');
+  document.body.classList.add('fake-fs-active');
+  fullscreenIcon.innerHTML = ICON_FULLSCREEN_EXIT;
+}
+
+function exitFakeFullscreen(){
+  videoWrap.classList.remove('fake-fullscreen');
+  document.body.classList.remove('fake-fs-active');
+  fullscreenIcon.innerHTML = ICON_FULLSCREEN;
+}
+
+function isFakeFullscreenActive(){
+  return videoWrap.classList.contains('fake-fullscreen');
+}
+
+fullscreenBtn.addEventListener('click', () => {
+  if(isFakeFullscreenActive()){
+    exitFakeFullscreen();
+    return;
+  }
+  if(isRealFullscreenActive()){
+    exitRealFullscreen();
+    return;
+  }
+  // ลองใช้ Fullscreen API จริงก่อน ถ้าใช้ไม่ได้ (กล่องแอนดรอยรุ่นเก่าหลายรุ่นไม่รองรับ)
+  // ให้ย้อนกลับไปใช้ fullscreen แบบจำลองด้วย CSS แทน เพื่อให้ยังขยายเต็มจอได้จริง
+  requestRealFullscreen(videoWrap).catch(() => {
+    enterFakeFullscreen();
+  });
+});
+
+['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(evt => {
+  document.addEventListener(evt, () => {
+    if(!isRealFullscreenActive() && !isFakeFullscreenActive()){
+      fullscreenIcon.innerHTML = ICON_FULLSCREEN;
+    } else if(isRealFullscreenActive()){
+      fullscreenIcon.innerHTML = ICON_FULLSCREEN_EXIT;
+    }
+  });
+});
+
+let qualityAutoMode = true;
+
+function resetQualityUI(){
+  qualityWrap.style.display = '';
+  qualityMenu.classList.remove('open');
+  qualityMenu.innerHTML = '';
+  qualityLabel.textContent = 'Auto';
+  qualityAutoMode = true;
+}
+
+function levelLabel(level){
+  if(!level) return '-';
+  return level.height ? `${level.height}p` : (level.bitrate ? `${Math.round(level.bitrate/1000)}kbps` : '-');
+}
+
+function buildQualityMenu(){
+  if(!hls || !hls.levels || hls.levels.length === 0){
+    qualityWrap.style.display = 'none';
+    return;
+  }
+  qualityWrap.style.display = '';
+  qualityMenu.innerHTML = '';
+
+  // Sort levels by height (or bitrate) descending, keep original index reference
+  const order = hls.levels
+    .map((lvl, idx) => ({ idx, lvl }))
+    .sort((a, b) => (b.lvl.height || b.lvl.bitrate) - (a.lvl.height || a.lvl.bitrate));
+
+  const autoItem = document.createElement('div');
+  autoItem.className = 'quality-item' + (hls.currentLevel === -1 ? ' active' : '');
+  autoItem.tabIndex = 0;
+  autoItem.dataset.level = '-1';
+  autoItem.innerHTML = `<span>อัตโนมัติ (Auto)</span>`;
+  autoItem.addEventListener('click', () => selectQuality(-1));
+  qualityMenu.appendChild(autoItem);
+
+  order.forEach(({ idx, lvl }) => {
+    const item = document.createElement('div');
+    item.className = 'quality-item' + (hls.currentLevel === idx ? ' active' : '');
+    item.tabIndex = 0;
+    item.dataset.level = String(idx);
+    item.innerHTML = `<span>${levelLabel(lvl)}</span>`;
+    item.addEventListener('click', () => selectQuality(idx));
+    qualityMenu.appendChild(item);
+  });
+
+  updateQualityLabel(hls.currentLevel);
+}
+
+function selectQuality(levelIdx){
+  qualityAutoMode = (levelIdx === -1);
+  if(hls) hls.currentLevel = levelIdx;
+  qualityMenu.classList.remove('open');
+  refreshFocusables();
+  setFocus(qualityBtn);
+  qualityMenu.querySelectorAll('.quality-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.level === String(levelIdx));
+  });
+  updateQualityLabel(hls ? hls.currentLevel : levelIdx);
+}
+
+function updateQualityLabel(levelIdx){
+  if(!hls || !hls.levels) return;
+  if(qualityAutoMode){
+    qualityLabel.textContent = 'Auto';
+    return;
+  }
+  const lvl = hls.levels[levelIdx];
+  qualityLabel.textContent = lvl ? levelLabel(lvl) : 'Auto';
+}
+
+qualityBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  qualityMenu.classList.toggle('open');
+  if(qualityMenu.classList.contains('open')){
+    refreshFocusables();
+    const activeItem = qualityMenu.querySelector('.quality-item.active') || qualityMenu.firstElementChild;
+    setFocus(activeItem);
+  } else {
+    refreshFocusables();
+    setFocus(qualityBtn);
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if(qualityMenu.classList.contains('open') && !qualityWrap.contains(e.target)){
+    qualityMenu.classList.remove('open');
+  }
+});
+
+video.addEventListener('timeupdate', () => {
+  const pct = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+  progressFilled.style.width = pct + '%';
+  timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+});
+
+progressBar.addEventListener('click', e => {
+  if(!video.duration) return;
+  const rect = progressBar.getBoundingClientRect();
+  const pct = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+  video.currentTime = pct * video.duration;
+});
+
+// ───────────────────────── AUTO-HIDE CONTROLS ON IDLE ─────────────────────────
+const customControls = document.getElementById('customControls');
+let idleTimer = null;
+
+function showControls(){
+  customControls.classList.remove('hidden-idle');
+  clearTimeout(idleTimer);
+  if(!video.paused){
+    idleTimer = setTimeout(() => {
+      if(!qualityMenu.classList.contains('open')){
+        customControls.classList.add('hidden-idle');
+      }
+    }, 3500);
+  }
+}
+
+['mousemove','touchstart','click','keydown'].forEach(evt => {
+  videoWrap.addEventListener(evt, showControls, { passive:true });
+});
+video.addEventListener('play', showControls);
+video.addEventListener('pause', () => { customControls.classList.remove('hidden-idle'); clearTimeout(idleTimer); });
+
+// ───────────────────────── MOBILE SIDEBAR TOGGLE ─────────────────────────
+const sidebar = document.getElementById('sidebar');
+const overlayDim = document.getElementById('overlayDim');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlayDim.classList.toggle('open');
+});
+overlayDim.addEventListener('click', closeSidebarMobile);
+function closeSidebarMobile(){
+  sidebar.classList.remove('open');
+  overlayDim.classList.remove('open');
+}
+
+// ───────────────────────── TV / REMOTE NAVIGATION (D-Pad) ─────────────────────────
+// Detect remote/keyboard usage to show focus ring (Android TV boxes send keydown arrow events)
+let focusables = [];
+let focusIndex = 0;
+
+function isTVLikely(){
+  return /Android|GoogleTV|AFT|BRAVIA|Tizen|Web0S|SMART-TV/i.test(navigator.userAgent);
+}
+
+function refreshFocusables(){
+  if (playerOverlay.classList.contains('open')) {
+    const qualityMenu = document.getElementById('qualityMenu');
+    if (qualityMenu && qualityMenu.classList.contains('open')) {
+      // While the quality menu is open, keep navigation confined to its items
+      focusables = Array.from(qualityMenu.querySelectorAll('.quality-item'));
+      return;
+    }
+    focusables = [
+      document.getElementById('closeBtn'),
+      document.getElementById('playPauseBtn'),
+      document.getElementById('rewindBtn'),
+      document.getElementById('forwardBtn'),
+      document.getElementById('muteBtn'),
+      document.getElementById('qualityBtn'),
+      document.getElementById('fullscreenBtn')
+    ].filter(Boolean);
+    return;
+  }
+  const cats = Array.from(document.querySelectorAll('.cat-item'));
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const dots = Array.from(document.querySelectorAll('.hero-dot'));
+  focusables = [...dots, ...cats, ...cards];
+}
+
+function setFocus(el){
+  document.querySelectorAll('.focused').forEach(e => e.classList.remove('focused'));
+  if(!el) return;
+  el.classList.add('focused');
+  el.scrollIntoView({block:'nearest', behavior:'smooth'});
+  focusIndex = focusables.indexOf(el);
+}
+
+function moveFocus(dir){
+  refreshFocusables();
+  if (focusables.length === 0) return;
+  if (focusIndex < 0 || focusIndex >= focusables.length) focusIndex = 0;
+
+  const inPlayer = playerOverlay.classList.contains('open');
+  // Inside the player, controls sit in a single row: 'up' should always reach
+  // the close button and 'down' the last control, instead of jumping by the
+  // (unrelated) grid column count.
+  const cols = inPlayer ? focusables.length : getGridColumns();
+  let next = focusIndex;
+
+  if (dir === 'right') next = Math.min(focusIndex + 1, focusables.length - 1);
+  else if (dir === 'left') next = Math.max(focusIndex - 1, 0);
+  else if (dir === 'down') next = Math.min(focusIndex + cols, focusables.length - 1);
+  else if (dir === 'up') next = Math.max(focusIndex - cols, 0);
+
+  setFocus(focusables[next]);
+}
+
+function getGridColumns(){
+  const grid = document.getElementById('grid');
+  const style = window.getComputedStyle(grid);
+  const cols = style.gridTemplateColumns.split(' ').length;
+  return cols || 1;
+}
+
+// ───────────────────────── REMOTE KEY NORMALIZATION ─────────────────────────
+// กล่องแอนดรอยทีวี / แอปรีโมทหลายรุ่น (โดยเฉพาะ WebView เก่าๆ) ไม่ส่งค่า
+// KeyboardEvent.key มาตรฐาน (เช่น 'ArrowRight') แต่จะส่งมาเป็น keyCode ตัวเลขแทน
+// (37/38/39/40 = ลูกศร, 13 = OK/Enter, 8/27/10009 = Back)
+// ฟังก์ชันนี้แปลงให้เป็นชื่อ key มาตรฐานเสมอ ไม่ว่าอุปกรณ์จะส่งมาแบบไหน
+function normalizeRemoteKey(e){
+  if (e.key) {
+    // บางอุปกรณ์ส่ง key เป็นชื่อเก่า (IE/เก่า) เช่น 'Left','Up','Spacebar'
+    const map = {
+      'Left':'ArrowLeft','Right':'ArrowRight','Up':'ArrowUp','Down':'ArrowDown',
+      'Spacebar':' ','Esc':'Escape'
+    };
+    if (e.key in map) return map[e.key];
+    if (e.key !== 'Unidentified') return e.key;
+  }
+  // fallback ด้วย keyCode/which สำหรับอุปกรณ์ที่ไม่รองรับ e.key
+  const code = e.keyCode || e.which;
+  switch(code){
+    case 37: return 'ArrowLeft';
+    case 38: return 'ArrowUp';
+    case 39: return 'ArrowRight';
+    case 40: return 'ArrowDown';
+    case 13: return 'Enter';
+    case 32: return ' ';
+    case 27: case 10009: return 'Escape';
+    case 8:  return 'Backspace';
+    default: return e.key || '';
+  }
+}
+
+// ───────────────────────── ประมวลผลปุ่มกด (ใช้ร่วมกันทั้ง keydown จริง และปุ่มที่ส่งมาจากภายนอกผ่าน postMessage) ─────────────────────────
+function handleRemoteKey(key, e){
+  document.body.classList.add('tv-mode');
+
+  if (playerOverlay.classList.contains('open')) {
+    switch(key){
+      case 'ArrowRight': if(e) e.preventDefault(); moveFocus('right'); break;
+      case 'ArrowLeft':  if(e) e.preventDefault(); moveFocus('left'); break;
+      case 'ArrowDown':  if(e) e.preventDefault(); moveFocus('down'); break;
+      case 'ArrowUp':    if(e) e.preventDefault(); moveFocus('up'); break;
+      case 'Enter':
+      case ' ': {
+        if(e) e.preventDefault();
+        const focusedInPlayer = document.querySelector('.focused');
+        if (focusedInPlayer) focusedInPlayer.click();
+        break;
+      }
+      case 'Escape':
+      case 'Backspace':
+        if(e) e.preventDefault();
+        if (qualityMenu.classList.contains('open')) {
+          qualityMenu.classList.remove('open');
+          refreshFocusables();
+          setFocus(qualityBtn);
+        } else {
+          closePlayer();
+        }
+        break;
+    }
+    return;
+  }
+
+  switch(key){
+    case 'ArrowRight': if(e) e.preventDefault(); moveFocus('right'); break;
+    case 'ArrowLeft':  if(e) e.preventDefault(); moveFocus('left'); break;
+    case 'ArrowDown':  if(e) e.preventDefault(); moveFocus('down'); break;
+    case 'ArrowUp':    if(e) e.preventDefault(); moveFocus('up'); break;
+    case 'Enter':
+    case ' ': {
+      if(e) e.preventDefault();
+      const focused = document.querySelector('.focused');
+      if (focused) focused.click();
+      break;
+    }
+    case 'Backspace':
+    case 'Escape':
+      closeSidebarMobile();
+      break;
+  }
+}
+
+document.addEventListener('keydown', e => {
+  handleRemoteKey(normalizeRemoteKey(e), e);
+});
+
+// ───────────────────────── รับปุ่มกดจากหน้าแม่ ผ่าน postMessage (เผื่อกรณีฝังเป็น iframe แล้วโฟกัส/keydown เข้าไม่ถึงเฟรมนี้) ─────────────────────────
+// หน้าแม่ที่ฝัง iframe นี้ สามารถส่งข้อความมาในรูปแบบ:
+//   iframe.contentWindow.postMessage({ type:'remoteKey', key:'ArrowRight' }, '*');
+// หรือจะส่งเป็น keyCode ก็ได้:
+//   iframe.contentWindow.postMessage({ type:'remoteKey', keyCode: 39 }, '*');
+window.addEventListener('message', e => {
+  const data = e.data;
+  if (!data || data.type !== 'remoteKey') return;
+  let key = data.key;
+  if (!key && typeof data.keyCode !== 'undefined') {
+    key = normalizeRemoteKey({ keyCode: data.keyCode });
+  }
+  if (key) handleRemoteKey(key, null);
+});
+
+// พยายามดึง focus เข้ามาที่หน้าต่างนี้ตอนโหลดเสร็จ เผื่อกรณีถูกฝังเป็น iframe
+// (ถ้าหน้าแม่เป็นคนละ origin เบราว์เซอร์อาจบล็อกคำสั่งนี้ได้ ซึ่งไม่เป็นไร เพราะยังมี postMessage เป็นทางสำรองอยู่)
+try { window.focus(); } catch(err) {}
+
+// Mouse use disables tv-mode visual ring
+document.addEventListener('mousemove', () => document.body.classList.remove('tv-mode'), {passive:true});
+
+// ───────────────────────── INIT ─────────────────────────
+function init(){
+  buildHero();
+  buildSidebar();
+  buildGrid();
+  refreshFocusables();
+  if (isTVLikely()) {
+    document.body.classList.add('tv-mode');
+    // ตั้งโฟกัสเริ่มต้นไว้ล่วงหน้า เพื่อให้กรอบสีเหลืองขึ้นมาให้เห็นทันที
+    // โดยไม่ต้องรอให้ผู้ใช้กดรีโมทครั้งแรกก่อน
+    setFocus(focusables[0]);
+  }
+}
+init();
+</script>
+</body>
+  @ By NETI หมวาดหมู่↑↓←→ Remote OK เลือกช่อง BACK กลับ 🔴 ออก
+</html>

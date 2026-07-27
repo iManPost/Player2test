@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+  <script>
+/* ==========================
+   ข้อมูลต้นฉบับ
+========================== */
+
+const PORTAL_URL = "https://";
+const MAC_ADDRESS = "00:11:22:33:44:55";
+
+/* ==========================
+   Base64
+========================== */
+
+const URL_BASE64 = "YUhSMGNEb3ZMMmx0WVc1d2IzTjBMbWRwZEdoMVlpNXBieTlwY0hSMmJtVjMv";
+const MAC_BASE64 = "MDA6MTE6MjI6MzM6NDQ6NTU=";
+
+/* ==========================
+   ถอดรหัส
+========================== */
+
+const CONFIG = {
+    p: atob(URL_BASE64),
+    m: atob(MAC_BASE64)
+};
+
+/* ==========================
+   ปิดคลิกขวา
+========================== */
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+    return false;
+});
+
+/* ==========================
+   ปิด F12 / DevTools Shortcut
+========================== */
+
+document.addEventListener("keydown", function(e){
+
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey &&
+            ["I","J","C"].includes(e.key.toUpperCase())
+        ) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U")
+    ){
+        e.preventDefault();
+        return false;
+    }
+
+});
+
+/* ==========================
+   ปิดลากรูป
+========================== */
+
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
+
+/* ==========================
+   ปิดเลือกข้อความ
+========================== */
+
+document.addEventListener("selectstart", function(e){
+    e.preventDefault();
+});
+
+/* ==========================
+   ตรวจ DevTools
+========================== */
+
+setInterval(function(){
+
+    const widthThreshold =
+        window.outerWidth - window.innerWidth > 160;
+
+    const heightThreshold =
+        window.outerHeight - window.innerHeight > 160;
+
+    if(widthThreshold || heightThreshold){
+
+        document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-size:24px;
+            font-family:sans-serif;">
+            Access Denied
+        </div>`;
+    }
+
+},1000);
+</script> 
+<style>
+*{
+    user-select:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -webkit-touch-callout:none;
+}
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+}
+</style>
+
+</head>
+
+<body>
+
+<iframe
+    id="playerFrame"
+    src="./folder3/index.html"
+    width="100%"
+    height="100%"
+    tabindex="-1"
+    style="position:fixed;top:0;left:0;border:none;">
+</iframe>
+
+<script>
+// ───────────────────────── ส่งต่อโฟกัส/ปุ่มกดลงไปยัง iframe ข้างใน ─────────────────────────
+// หน้านี้อาจถูกฝังเป็น iframe ซ้อนอยู่ในแอปอื่นอีกที (แอปอื่น > หน้านี้ > iframe เล่นหนัง)
+// เบราว์เซอร์จะส่ง keydown ไปให้ document ที่ "มี focus" อยู่เท่านั้น ซึ่งถ้าไม่ได้ตั้งไว้
+// focus มักจะค้างอยู่ที่ระดับบนสุด ทำให้ปุ่มรีโมทไม่มีทางลงไปถึง iframe เล่นหนังได้เลย
+// โค้ดนี้แก้ปัญหาด้วย 2 ทาง พร้อมกัน:
+//   1) พยายามดึง focus เข้ามาที่ iframe เล่นหนังโดยตรง (ใช้ได้เมื่อ same-origin)
+//   2) ดัก keydown ทุกตัวที่มาถึงหน้านี้ แล้วส่งต่อไปให้ iframe เล่นหนังผ่าน postMessage
+//      (ใช้ได้แม้ข้ามโดเมน/ข้าม origin ก็ตาม)
+
+const playerFrame = document.getElementById('playerFrame');
+
+function focusPlayerFrame(){
+  try { playerFrame.contentWindow.focus(); } catch(err){}
+}
+
+playerFrame.addEventListener('load', focusPlayerFrame);
+// เผื่อบางเบราว์เซอร์ยิง load ก่อนสคริปต์นี้ทำงานทัน
+window.addEventListener('load', focusPlayerFrame);
+try { window.focus(); } catch(err) {}
+
+// ดักคีย์ที่มาถึงระดับหน้านี้ (ไม่ว่าจะกดตรง ๆ บนหน้านี้ หรือหลุดมาจาก focus ที่ค้างอยู่)
+// แล้วส่งต่อเป็น postMessage ให้ iframe เล่นหนังจัดการเอง
+document.addEventListener('keydown', e => {
+  focusPlayerFrame();
+  try {
+    playerFrame.contentWindow.postMessage({
+      type: 'remoteKey',
+      key: e.key,
+      keyCode: e.keyCode || e.which
+    }, '*');
+  } catch(err) {}
+});
+
+// เผื่อกรณีหน้านี้เองก็ถูกฝังอยู่ใน iframe ของแอปอื่นอีกที และแอปนั้นส่ง postMessage
+// ปุ่มกดลงมาให้ (แทนที่จะยิง keydown ตรง ๆ) ให้ส่งต่อข้อความเดิมนั้นลงไปยัง iframe เล่นหนังต่อ
+window.addEventListener('message', e => {
+  const data = e.data;
+  if (!data || data.type !== 'remoteKey') return;
+  if (e.source === playerFrame.contentWindow) return; // กันส่งวนกลับเข้าตัวเอง
+  focusPlayerFrame();
+  try { playerFrame.contentWindow.postMessage(data, '*'); } catch(err) {}
+});
+</script>
+
+</body>
+</html>
