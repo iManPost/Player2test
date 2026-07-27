@@ -5,102 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MOV PLAYER</title>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
-  <script>
-/* ==========================
-   ข้อมูลต้นฉบับ
-========================== */
 
-const PORTAL_URL = "https://";
-const MAC_ADDRESS = "00:11:22:33:44:55";
-
-/* ==========================
-   Base64
-========================== */
-
-const URL_BASE64 = "YUhSMGNEb3ZMMmx0WVc1d2IzTjBMbWRwZEdoMVlpNXBieTlwY0hSMmJtVjMv";
-const MAC_BASE64 = "MDA6MTE6MjI6MzM6NDQ6NTU=";
-
-/* ==========================
-   ถอดรหัส
-========================== */
-
-const CONFIG = {
-    p: atob(URL_BASE64),
-    m: atob(MAC_BASE64)
-};
-
-/* ==========================
-   ปิดคลิกขวา
-========================== */
-
-document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-    return false;
-});
-
-/* ==========================
-   ปิด F12 / DevTools Shortcut
-========================== */
-
-document.addEventListener("keydown", function(e){
-
-    if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey &&
-            ["I","J","C"].includes(e.key.toUpperCase())
-        ) ||
-        (e.ctrlKey && e.key.toUpperCase() === "U")
-    ){
-        e.preventDefault();
-        return false;
-    }
-
-});
-
-/* ==========================
-   ปิดลากรูป
-========================== */
-
-document.addEventListener("dragstart", function(e){
-    e.preventDefault();
-});
-
-/* ==========================
-   ปิดเลือกข้อความ
-========================== */
-
-document.addEventListener("selectstart", function(e){
-    e.preventDefault();
-});
-
-/* ==========================
-   ตรวจ DevTools
-========================== */
-
-setInterval(function(){
-
-    const widthThreshold =
-        window.outerWidth - window.innerWidth > 160;
-
-    const heightThreshold =
-        window.outerHeight - window.innerHeight > 160;
-
-    if(widthThreshold || heightThreshold){
-
-        document.body.innerHTML = `
-        <div style="
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            font-size:24px;
-            font-family:sans-serif;">
-            Access Denied
-        </div>`;
-    }
-
-},1000);
-</script> 
 <style>
 :root{
   --bg:#0b0c10;
@@ -831,17 +736,38 @@ function openPlayer(item){
   resetQualityUI();
 
   if (Hls.isSupported()) {
+    // กล่องทีวี/แอนดรอยจอบ็อกซ์ส่วนใหญ่มีแรมจำกัดมาก และ Android WebView
+    // ไม่รองรับ native HLS (ต่างจาก Safari) จึงต้องพึ่ง hls.js + MSE เสมอ
+    // ซึ่งกินหน่วยความจำมากกว่า -> ลด buffer และจำกัดความละเอียดสูงสุดลง
+    // บนอุปกรณ์ที่ตรวจพบว่าเป็นทีวี/กล่อง เพื่อลดโอกาส renderer ของ WebView
+    // ใช้แรมเกินจนตัวแอปที่ครอบ WebView อยู่ (ถ้ามี) สั่งเด้งกลับหน้าหลัก
+    const isTV = isTVLikely();
+    let errorRetryCount = 0;
+
     hls = new Hls({
       xhrSetup: function(xhr){
         // referrer hint via custom header where supported by CDN proxies
         try { xhr.setRequestHeader('Referer', REFERRER); } catch(e){}
       },
-      maxBufferLength: 30
+      maxBufferLength: isTV ? 15 : 30,
+      maxMaxBufferLength: isTV ? 30 : 60,
+      maxBufferSize: isTV ? 20 * 1000 * 1000 : 60 * 1000 * 1000
     });
     hls.loadSource(url);
     hls.attachMedia(video);
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
       loadingEl.style.display = 'none';
+      // จำกัดความละเอียดเริ่มต้นไม่ให้เกิน 720p บนกล่องทีวี เพื่อลดภาระ
+      // ตัวถอดรหัสวิดีโอ/หน่วยความจำ (ผู้ใช้ยังสามารถเลือกความละเอียดสูงขึ้นเองได้)
+      if (isTV && hls.levels && hls.levels.length){
+        let capIdx = -1;
+        hls.levels.forEach((lvl, idx) => {
+          if(lvl.height && lvl.height <= 720){
+            if(capIdx === -1 || lvl.height > hls.levels[capIdx].height) capIdx = idx;
+          }
+        });
+        if(capIdx !== -1) hls.autoLevelCapping = capIdx;
+      }
       video.play().catch(()=>{});
       buildQualityMenu();
     });
@@ -849,26 +775,42 @@ function openPlayer(item){
       updateQualityLabel(data.level);
     });
     hls.on(Hls.Events.ERROR, (event, data) => {
-      if (data.fatal) {
-        // กล่องแอนดรอยรุ่นเก่าบางรุ่นมี MediaSource Extensions (MSE) ที่ไม่สมบูรณ์
-        // ทำให้ hls.js ใช้งานไม่ได้ ให้ลองเปลี่ยนไปเล่นแบบ native <video src> แทน
-        // ซึ่งอาศัย media pipeline ของระบบปฏิบัติการ (มักรองรับ HLS ได้ดีกว่าบนอุปกรณ์เก่า)
-        if (!video.dataset.fallbackTried) {
-          video.dataset.fallbackTried = '1';
-          hls.destroy();
-          hls = null;
-          qualityWrap.style.display = 'none';
-          video.src = url;
-          video.addEventListener('loadedmetadata', () => {
-            loadingEl.style.display = 'none';
-            video.play().catch(()=>{});
-          }, { once:true });
-          video.addEventListener('error', () => {
-            loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">โหลดวิดีโอไม่สำเร็จ ลองใหม่อีกครั้ง</div>';
-          }, { once:true });
-        } else {
+      if (!data.fatal) return;
+
+      // ก่อนจะยอมแพ้ ให้ลองใช้วิธีกู้คืนมาตรฐานของ hls.js ก่อน (ไม่เกิน 2 ครั้ง)
+      // เพราะข้อผิดพลาดชั่วคราวจากเน็ตเวิร์ก/ดีโค้ดเดอร์บนกล่องทีวีเกิดขึ้นบ่อย
+      // และมักกู้คืนเองได้โดยไม่ต้องรีเซ็ตทั้งเพลเยอร์
+      if (errorRetryCount < 2 && data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+        errorRetryCount++;
+        hls.startLoad();
+        return;
+      }
+      if (errorRetryCount < 2 && data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+        errorRetryCount++;
+        hls.recoverMediaError();
+        return;
+      }
+
+      // กล่องแอนดรอยรุ่นเก่าบางรุ่นมี MediaSource Extensions (MSE) ที่ไม่สมบูรณ์
+      // ทำให้ hls.js ใช้งานไม่ได้ ให้ลองเปลี่ยนไปเล่นแบบ native <video src> แทน
+      // ซึ่งอาศัย media pipeline ของระบบปฏิบัติการ (มักรองรับ HLS ได้ดีกว่าบนอุปกรณ์เก่า)
+      // หมายเหตุ: Android WebView ส่วนใหญ่ไม่รองรับ native HLS อยู่แล้ว
+      // ดังนั้น fallback นี้จะช่วยได้จริงบน Safari/iOS เป็นหลัก
+      if (!video.dataset.fallbackTried) {
+        video.dataset.fallbackTried = '1';
+        hls.destroy();
+        hls = null;
+        qualityWrap.style.display = 'none';
+        video.src = url;
+        video.addEventListener('loadedmetadata', () => {
+          loadingEl.style.display = 'none';
+          video.play().catch(()=>{});
+        }, { once:true });
+        video.addEventListener('error', () => {
           loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">โหลดวิดีโอไม่สำเร็จ ลองใหม่อีกครั้ง</div>';
-        }
+        }, { once:true });
+      } else {
+        loadingEl.innerHTML = '<div style="color:#ff6b6b;font-size:14px;">โหลดวิดีโอไม่สำเร็จ ลองใหม่อีกครั้ง</div>';
       }
     });
   } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
