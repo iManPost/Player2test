@@ -1,5 +1,17 @@
 export const netflixMovies = [
 
+            {
+    name: ' 72 ชั่วโมงในไมแอมี 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/72-Hours-2026.webp',
+    url: 'https://media.vdohls.com/LtGmNM-S9E_c6/video.m3u8'
+  },
+            {
+    name: ' เอลีซ หญิงสาวในเงาโศก  2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Elize-Shadows-of-a-Woman-2026.webp',
+    url: 'https://media.vdohls.com/AWX_QK-RANSM8/video.m3u8'
+  },
       {
     name: ' คนเดือดทวงแค้น  2026  ',
     group: '🎬netflix2026',
