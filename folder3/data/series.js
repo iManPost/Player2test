@@ -1,5 +1,55 @@
 export const series = [
 
+
+     {
+    name: ' ท่านประธานกำมะลอ EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Better-Late-than-Single-Season-2-2026-e1783474853457.webp',
+    url: 'https://media.vdohls.com/Z_fdu-v9GCQru/video.m3u8'
+  }, 
+           {
+    name: ' ท่านประธานกำมะลอ EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Better-Late-than-Single-Season-2-2026-e1783474853457.webp',
+    url: 'https://media.vdohls.com/T-F_mKmFbz2il/video.m3u8'
+  },  
+           {
+    name: ' ท่านประธานกำมะลอ EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Better-Late-than-Single-Season-2-2026-e1783474853457.webp',
+    url: 'https://media.vdohls.com/M-H_nFI84OFkg/video.m3u8'
+  },   
+        
+  {
+    name: ' ท่านประธานกำมะลอ EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Apartment-Job-2026.webp',
+    url: 'https://media.vdohls.com/Bg-vLrxQ_GE5z/video.m3u8'
+  }, 
+       {
+    name: ' ท่านประธานกำมะลอ EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Apartment-Job-2026.webp',
+    url: 'https://media.vdohls.com/8-iupy_yG4ZIr/video.m3u8'
+  }, 
+      {
+    name: ' ท่านประธานกำมะลอ EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Apartment-Job-2026.webp',
+    url: 'https://media.vdohls.com/B3un_B6-ri6Kk/video.m3u8'
+  }, 
+              {
+    name: ' ท่านประธานกำมะลอ EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Apartment-Job-2026.webp',
+    url: 'https://media.vdohls.com/zU_tSl-zXCplS/video.m3u8'
+  }, 
+                      {
+    name: ' ท่านประธานกำมะลอ EP.5',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Apartment-Job-2026.webp',
+    url: 'https://media.vdohls.com/Ly_O0-4Gd9z15/video.m3u8'
+  }, 
         {
     name: ' พลิกชะตาเหนือฟ้า ตอนที่1',
     group: '🎬ซีรีย์2026',
