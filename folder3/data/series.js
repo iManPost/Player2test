@@ -4,6 +4,30 @@ export const series = [
      {
     name: ' ท่านประธานกำมะลอ EP.1',
     group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/Sfa_32-CAoe1L/video.m3u8'
+  }, 
+          {
+    name: ' ท่านประธานกำมะลอ EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/Fst4-SFD_jOwr/video.m3u8'
+  }, 
+               {
+    name: ' ท่านประธานกำมะลอ EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/q5QekWc0tPx/video.m3u8'
+  }, 
+                    {
+    name: ' ท่านประธานกำมะลอ EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/chS1KiGIFtA/video.m3u8'
+  }, 
+     {
+    name: ' ท่านประธานกำมะลอ EP.1',
+    group: '🎬ซีรีย์2026',
     logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Better-Late-than-Single-Season-2-2026-e1783474853457.webp',
     url: 'https://media.vdohls.com/Z_fdu-v9GCQru/video.m3u8'
   }, 
