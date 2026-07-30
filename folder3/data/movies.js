@@ -1,5 +1,6 @@
 export const movies = [
-        { name: 'Moana (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Moana.jpg', url: 'https://enjoy24cdn.com/hlsr2/3c08644d1df49f2a8be1fc0cfb7667bb/master.m3u8' },
+      { name: 'นางมารสวมปราด้า 2 (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Devil-Wears-Prada-2-%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%94%E0%B9%89%E0%B8%B2-2.jpg', url: 'https://enjoy24cdn.com/hlsr2/bcbe1eb316da2989983a328b91367192/master.m3u8' },
+    { name: 'Moana (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Moana.jpg', url: 'https://enjoy24cdn.com/hlsr2/3c08644d1df49f2a8be1fc0cfb7667bb/master.m3u8' },
     { name: 'เปิดเกมฆ่า ล่าถล่มเมือง (2026) ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Cold-War-1994-2026.webp', url: 'https://media.vdohls.com/TP4-QjzN1_ap8/video.m3u8' },
      { name: 'พินอคคิโอ (2026) ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Pinocchio-Unstrung-2026-e1785120197253.webp', url: 'https://enjoy24cdn.com/hlsr2/78b42dabcdd9abae49398c3a703439d5/master.m3u8' }, 
      { name: 'ปาร์ตี้สละโสด (2026) ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/3-Good-Guys-2026.webp', url: 'https://enjoy24cdn.com/hlsr2/e351e79113fa3fe68323a03938971c51/master.m3u8' }, 
