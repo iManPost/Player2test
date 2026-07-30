@@ -1,5 +1,17 @@
 export const netflixMovies = [
 
+                        {
+    name: ' พิษรักเกมลวง 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Toxic-Love-Story-2026.webp',
+    url: 'https://vdohls.com/5exJY_iM-H3zK/video.m3u8'
+  },
+                        {
+    name: ' ผู้แสวงหาความจริง 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/The-Truthers-2026.webp',
+    url: 'https://vdohls.com/YW7VsU-fd0_iQ/video.m3u8'
+  },
             {
     name: ' 72 ชั่วโมงในไมแอมี 2026  ',
     group: '🎬netflix2026',
