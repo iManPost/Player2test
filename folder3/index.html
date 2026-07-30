@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MOV PLAYER</title>
+
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
 
 <style>
@@ -26,84 +27,6 @@ html,body{
   overflow-x:hidden;
 }
 body{display:flex;flex-direction:column;min-height:100vh;}
-
-/* ===== HEADER / SLIDER ===== */
-.hero{
-  position:relative;
-  width:100%;
-  height:42vh;
-  min-height:220px;
-  max-height:480px;
-  overflow:hidden;
-  background:#000;
-}
-.hero-track{
-  display:flex;
-  height:100%;
-  transition:transform .5s ease;
-  will-change:transform;
-}
-.hero-slide{
-  position:relative;
-  flex:0 0 100%;
-  height:100%;
-  background-size:cover;
-  background-position:center top;
-  cursor:pointer;
-}
-.hero-slide::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(11,12,16,1) 0%, rgba(11,12,16,0.55) 35%, rgba(11,12,16,0) 70%),
-             linear-gradient(to right, rgba(11,12,16,0.6) 0%, rgba(11,12,16,0) 40%);
-}
-.hero-info{
-  position:absolute;
-  left:24px; right:24px; bottom:18px;
-  z-index:2;
-}
-.hero-tag{
-  display:inline-block;
-  background:var(--accent);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.05em;
-  padding:3px 10px;
-  border-radius:4px;
-  margin-bottom:8px;
-}
-.hero-title{
-  font-size:clamp(18px,4vw,32px);
-  font-weight:800;
-  text-shadow:0 2px 8px rgba(0,0,0,.8);
-  max-width:80%;
-}
-.hero-dots{
-  position:absolute;
-  right:18px; bottom:18px;
-  display:flex; gap:6px; z-index:3;
-}
-.hero-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(255,255,255,.35);
-  cursor:pointer;
-  transition:.25s;
-}
-.hero-dot.active{background:var(--accent2);width:22px;border-radius:5px;}
-.hero-nav{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:42px;height:42px;border-radius:50%;
-  background:rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;font-size:20px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:3;
-  opacity:0;transition:.2s;
-}
-.hero:hover .hero-nav{opacity:1;}
-.hero-nav.prev{left:14px;}
-.hero-nav.next{right:14px;}
 
 /* ===== TOP BAR ===== */
 .topbar{
@@ -414,7 +337,7 @@ body.fake-fs-active .player-box{max-width:none;width:100vw;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* ===== TV / REMOTE focus ring ===== */
-.tv-mode .card.focused, .tv-mode .cat-item.focused, .tv-mode .close-btn.focused, .tv-mode .hero-dot.focused, .tv-mode .ctrl-btn.focused, .tv-mode .quality-item.focused{
+.tv-mode .card.focused, .tv-mode .cat-item.focused, .tv-mode .close-btn.focused, .tv-mode .ctrl-btn.focused, .tv-mode .quality-item.focused{
   outline:3px solid var(--focus);
   outline-offset:2px;
 }
@@ -439,13 +362,6 @@ body.fake-fs-active .player-box{max-width:none;width:100vw;}
   }
   .overlay-dim.open{display:block;}
   .grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;}
-  .hero{height:32vh;min-height:170px;}
-  .hero-title{max-width:100%;}
-}
-
-/* Landscape phone */
-@media (max-width:900px) and (orientation:landscape){
-  .hero{height:60vh;}
 }
 
 /* Portrait small */
@@ -464,13 +380,6 @@ body.fake-fs-active .player-box{max-width:none;width:100vw;}
   <div class="search-box">
     <input id="searchInput" type="text" placeholder="ค้นหาชื่อเรื่อง...">
   </div>
-</div>
-
-<div class="hero" id="hero">
-  <div class="hero-track" id="heroTrack"></div>
-  <div class="hero-nav prev" id="heroPrev">‹</div>
-  <div class="hero-nav next" id="heroNext">›</div>
-  <div class="hero-dots" id="heroDots"></div>
 </div>
 
 <div class="overlay-dim" id="overlayDim"></div>
@@ -554,61 +463,8 @@ const items = [...movies, ...series, ...netflixMovies, ...anime, ...comedy];
 let currentGroup = 'ทั้งหมด';
 let searchTerm = '';
 let hls = null;
-let heroIndex = 0;
-let heroTimer = null;
 
 const groups = ['ทั้งหมด', ...Array.from(new Set(items.map(i => i.group)))];
-
-// ───────────────────────── HERO SLIDER (newest movies) ─────────────────────────
-function buildHero(){
-  // featured = newest category items (หนังใหม่2026 first, fallback to all) — จำกัดแค่ 7 เรื่อง
-  let featured = items.filter(i => /2026|2025/.test(i.group)).slice(0, 10);
-  if(featured.length === 0) featured = items.slice(0, 10);
-
-  const track = document.getElementById('heroTrack');
-  const dots = document.getElementById('heroDots');
-  track.innerHTML = '';
-  dots.innerHTML = '';
-
-  featured.forEach((it, idx) => {
-    const slide = document.createElement('div');
-    slide.className = 'hero-slide';
-    slide.style.backgroundImage = `url('${it.logo}')`;
-    slide.tabIndex = 0;
-    slide.addEventListener('click', () => openPlayer(it));
-    slide.innerHTML = `<div class="hero-info">
-        <span class="hero-tag">${it.group}</span>
-        <div class="hero-title">${it.name}</div>
-      </div>`;
-    track.appendChild(slide);
-
-    const dot = document.createElement('div');
-    dot.className = 'hero-dot' + (idx === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goHero(idx));
-    dots.appendChild(dot);
-  });
-
-  document.getElementById('heroPrev').onclick = () => goHero(heroIndex - 1);
-  document.getElementById('heroNext').onclick = () => goHero(heroIndex + 1);
-
-  goHero(0);
-  resetHeroTimer();
-}
-
-function goHero(idx){
-  const track = document.getElementById('heroTrack');
-  const slides = track.children;
-  if(slides.length === 0) return;
-  heroIndex = (idx + slides.length) % slides.length;
-  track.style.transform = `translateX(-${heroIndex * 100}%)`;
-  document.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === heroIndex));
-  resetHeroTimer();
-}
-
-function resetHeroTimer(){
-  if(heroTimer) clearInterval(heroTimer);
-  heroTimer = setInterval(() => goHero(heroIndex + 1), 5000);
-}
 
 // ───────────────────────── SIDEBAR / CATEGORIES ─────────────────────────
 function buildSidebar(){
@@ -1136,8 +992,7 @@ function refreshFocusables(){
   }
   const cats = Array.from(document.querySelectorAll('.cat-item'));
   const cards = Array.from(document.querySelectorAll('.card'));
-  const dots = Array.from(document.querySelectorAll('.hero-dot'));
-  focusables = [...dots, ...cats, ...cards];
+  focusables = [...cats, ...cards];
 }
 
 function setFocus(el){
@@ -1154,12 +1009,26 @@ function moveFocus(dir){
   if (focusIndex < 0 || focusIndex >= focusables.length) focusIndex = 0;
 
   const inPlayer = playerOverlay.classList.contains('open');
-  // Inside the player, controls sit in a single row: 'up' should always reach
-  // the close button and 'down' the last control, instead of jumping by the
-  // (unrelated) grid column count.
-  const cols = inPlayer ? focusables.length : getGridColumns();
-  let next = focusIndex;
+  const catCount = inPlayer ? 0 : document.querySelectorAll('.cat-item').length;
+  const inCatList = !inPlayer && focusIndex < catCount;
 
+  // เมนูหมวดหมู่ทางซ้ายเรียงเป็นคอลัมน์เดียว ↑/↓ จึงต้องขยับทีละ 1 เสมอ
+  // (เดิมใช้จำนวนคอลัมน์ของกริดหนัง ทำให้กดลงจากเมนูหมวดหมู่แล้วกระโดดข้ามผิดตำแหน่ง)
+  // ส่วนในเพลเยอร์ ปุ่มควบคุมเรียงแถวเดียว ให้ ↑/↓ ไปสุดแถวได้เลย
+  let cols;
+  if (inPlayer) cols = focusables.length;
+  else if (inCatList) cols = 1;
+  else cols = getGridColumns();
+
+  // ก่อนเลื่อนลงในกริดหนัง ให้เช็คว่ากำลังจะโฟกัสไปถึงแถวท้ายๆ ของรายการที่โหลดไว้หรือยัง
+  // ถ้าใกล้หมด ให้โหลดเรื่องเพิ่มทันที แทนที่จะรอ IntersectionObserver อย่างเดียว
+  // (พบว่ารีโมทกล่องแอนดรอยบางรุ่นกดเร็ว/กดค้างแล้ว observer ตามโหลดไม่ทัน ทำให้เลื่อนลงต่อไม่ได้)
+  if (dir === 'down' && !inPlayer && !inCatList) {
+    ensureMoreCardsLoaded(focusIndex - catCount, cols);
+    refreshFocusables();
+  }
+
+  let next = focusIndex;
   if (dir === 'right') next = Math.min(focusIndex + 1, focusables.length - 1);
   else if (dir === 'left') next = Math.max(focusIndex - 1, 0);
   else if (dir === 'down') next = Math.min(focusIndex + cols, focusables.length - 1);
@@ -1168,11 +1037,31 @@ function moveFocus(dir){
   setFocus(focusables[next]);
 }
 
+// โหลดการ์ดหนังเพิ่มล่วงหน้า ถ้าตำแหน่งที่โฟกัสอยู่เหลืออีกไม่เกิน 2 แถวก่อนถึงท้ายรายการที่โหลดไว้
+function ensureMoreCardsLoaded(cardFocusIndex, cols){
+  if (cardFocusIndex < 0) return;
+  if (renderedCount >= currentFilteredList.length) return; // โหลดครบแล้ว ไม่ต้องทำอะไร
+  const loadedCount = document.querySelectorAll('.card').length;
+  const remainingRows = Math.floor((loadedCount - 1 - cardFocusIndex) / Math.max(cols, 1));
+  if (remainingRows <= 2) {
+    renderNextBatch();
+  }
+}
+
+// นับจำนวนคอลัมน์ของกริดจากตำแหน่งจริงบนหน้าจอ (offsetTop ของการ์ดที่อยู่แถวเดียวกัน)
+// แทนการอ่านค่า computed style ของ grid-template-columns ตรงๆ เพราะ WebView บนกล่องแอนดรอย
+// หลายรุ่นไม่คืนค่าความกว้างแต่ละคอลัมน์ที่คำนวณแล้ว (คืนค่าเป็น "repeat(auto-fill,...)" ดิบๆ แทน)
+// ทำให้นับจำนวนคอลัมน์ผิด และกด ↓ แล้วโฟกัสกระโดดพลาดจนดูเหมือนเลื่อนลงต่อไม่ได้
 function getGridColumns(){
-  const grid = document.getElementById('grid');
-  const style = window.getComputedStyle(grid);
-  const cols = style.gridTemplateColumns.split(' ').length;
-  return cols || 1;
+  const cards = document.querySelectorAll('.card');
+  if (cards.length < 2) return 1;
+  const firstTop = cards[0].offsetTop;
+  let count = 0;
+  for (const c of cards) {
+    if (Math.abs(c.offsetTop - firstTop) < 2) count++;
+    else break;
+  }
+  return count || 1;
 }
 
 // ───────────────────────── REMOTE KEY NORMALIZATION ─────────────────────────
@@ -1284,7 +1173,6 @@ document.addEventListener('mousemove', () => document.body.classList.remove('tv-
 
 // ───────────────────────── INIT ─────────────────────────
 function init(){
-  buildHero();
   buildSidebar();
   buildGrid();
   refreshFocusables();
@@ -1297,10 +1185,11 @@ function init(){
 }
 init();
 
+
  /* ==========================
    ข้อมูลต้นฉบับ
 ========================== */
-const PORTAL_URL = "https://iptvandroidtv.iveenvon.workers.dev/";
+const PORTAL_URL = "https://ipt";
 const MAC_ADDRESS = "00:11:22:33:44:55";
 
 /* ==========================
@@ -1355,6 +1244,9 @@ document.addEventListener("selectstart", function(e){
     e.preventDefault();
 }); 
 </script>
+
+
+
 </body>
   @ By NETI หมวาดหมู่↑↓←→ Remote OK เลือกช่อง BACK กลับ 🔴 ออก
 </html>
