@@ -1,4 +1,5 @@
 export const movies = [
+      { name: 'สไปเดอร์แมน แบรนด์นิวเดย์ (2026) ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Spider-Man-Brand-New-Day-2026-e1780475310344.webp', url: 'https://vdohls.com/BXVB1Axzoq5/video.m3u8' },
       { name: 'นางมารสวมปราด้า 2 (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Devil-Wears-Prada-2-%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%A7%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%94%E0%B9%89%E0%B8%B2-2.jpg', url: 'https://enjoy24cdn.com/hlsr2/bcbe1eb316da2989983a328b91367192/master.m3u8' },
     { name: 'Moana (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Moana.jpg', url: 'https://enjoy24cdn.com/hlsr2/3c08644d1df49f2a8be1fc0cfb7667bb/master.m3u8' },
     { name: 'เปิดเกมฆ่า ล่าถล่มเมือง (2026) ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Cold-War-1994-2026.webp', url: 'https://media.vdohls.com/TP4-QjzN1_ap8/video.m3u8' },
