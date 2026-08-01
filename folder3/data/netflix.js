@@ -1,6 +1,19 @@
 export const netflixMovies = [
 
-                        {
+
+      {
+    name: ' Eat Pray Bark 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Eat-Pray-Bark.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/7b003cacf9b1df1452f87ee97db9ae23/master.m3u8'
+  },
+    {
+    name: ' Is God Is 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Is-God-Is.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/c6bef36525a1a44d62f33cd7882adca8/master.m3u8'
+  },
+       {
     name: ' พิษรักเกมลวง 2026  ',
     group: '🎬netflix2026',
     logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Toxic-Love-Story-2026.webp',
