@@ -2,6 +2,36 @@ export const series = [
 
 
      {
+    name: ' ตำนานนทีมืด EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/5dk-NXba_3gt9/video.m3u8'
+  }, 
+          {
+    name: ' ตำนานนทีมืด EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/WP8T-dc5_DHqq/video.m3u8'
+  }, 
+               {
+    name: ' ตำนานนทีมืด EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/BP0jcB_g-49q0/video.m3u8'
+  }, 
+                    {
+    name: ' ตำนานนทีมืด EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/HL-4kCo9_ErF4/video.m3u8'
+  }, 
+                         {
+    name: ' ตำนานนทีมืด EP.5',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
+    url: 'https://vdohls.com/EhHjPj_gx-Lj2/video.m3u8'
+  }, 
+     {
     name: ' มรดกร้านนักฆ่า 2 EP.1',
     group: '🎬ซีรีย์2026',
     logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/A-Shop-for-Killers-Season-2-2026.webp',
