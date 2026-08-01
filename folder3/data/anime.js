@@ -1,6 +1,47 @@
  export const anime = [
 
-
+     {
+    name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 1',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/From-Old-Country-Bumpkin-to-Master-Swordsman-2025.webp',
+    url: 'https://vdohls.com/0-QTx_2yynxPi/video.m3u8'
+  },
+  {
+    name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 2',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/From-Old-Country-Bumpkin-to-Master-Swordsman-2025.webp',
+    url: 'https://vdohls.com/xOM-aMNHZ_Lqn/video.m3u8'
+  },
+    {
+    name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 3',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/From-Old-Country-Bumpkin-to-Master-Swordsman-2025.webp',
+    url: 'https://vdohls.com/sG-1iENOBX_6A/video.m3u8'
+  },
+      {
+    name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 4',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/From-Old-Country-Bumpkin-to-Master-Swordsman-2025.webp',
+    url: 'https://vdohls.com/Z9fJ0-6EUP_3A/video.m3u8'
+  },
+        {
+    name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 5',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/From-Old-Country-Bumpkin-to-Master-Swordsman-2025.webp',
+    url: 'https://vdohls.com/q-QOSXY_LP8eN/video.m3u8'
+  },
+     {
+    name: 'วันพันช์แมน ซีซั่น 3 ตอนที่ 1',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/One-Punch-Man-Season-3-2025.webp',
+    url: 'https://vdohls.com/i2_GC-kYhTwbP/video.m3u8'
+  },
+       {
+    name: 'วันพันช์แมน ซีซั่น 3 ตอนที่ 1',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2025/10/One-Punch-Man-Season-3-2025.webp',
+    url: 'https://vdohls.com/i2_GC-kYhTwbP/video.m3u8'
+  },
      {
     name: 'เกิดใหม่กลายเป็นดาบ  ตอนที่ 1',
     group: 'Anime',
