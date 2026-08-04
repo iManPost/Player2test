@@ -1,6 +1,17 @@
 export const netflixMovies = [
 
-
+           {
+    name: ' เมื่อพายุมาเยือน 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Sesame-Street-%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%9E%E0%B8%B2%E0%B8%A2%E0%B8%B8%E0%B8%A1%E0%B8%B2%E0%B9%80%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%99.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/b2f7eabfbeaa9816cb1aaee5ac1d678a/master.m3u8'
+  },
+      {
+    name: ' รักช้าๆ แต่มาชัวร์ 2026  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Love-in-Slow-Motion-%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%8A%E0%B9%89%E0%B8%B2%E0%B9%86-%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%A1%E0%B8%B2%E0%B8%8A%E0%B8%B1%E0%B8%A7%E0%B8%A3%E0%B9%8C.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/e628c41763eee853e04bb2c65a150d77/master.m3u8'
+  },
       {
     name: ' Eat Pray Bark 2026  ',
     group: '🎬netflix2026',
