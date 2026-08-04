@@ -1,5 +1,18 @@
  export const anime = [
 
+
+       {
+    name: ' โอเวอร์ ลอร์ด 2',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Overlord-Movie-2-The-Dark-Hero-2017.webp',
+    url: 'https://vdohls.com/g_epF0-49tG6U/video.m3u8'
+  },
+       {
+    name: 'ยอดนักสืบจิ๋วโคนัน',
+    group: 'Anime',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Detective-Conan-The-Movie-29-Haiwei-no-Datenshi-2026-e1783479951621.webp',
+    url: 'https://vdohls.com/SfB_YG2zN-B9m/video.m3u8'
+  },
      {
     name: 'ปรมาจารย์ดาบชั้นเซียน ตอนที่ 1',
     group: 'Anime',
