@@ -1,4 +1,5 @@
 export const movies = [
+     { name: 'หน่วยรบฝ่าแดนนรกซอมบี้  ', group: '🎬หนังใหม่2026', logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Redcon-1-2018-e1785466156195.webp', url: 'https://vdohls.com/sNespjp6GGE/video.m3u8' },
      { name: 'ปากปีศาจ (2026 movietofree) ', group: '🎬หนังใหม่2026', logo: 'https://cdn.imgferry.com/uploads/2026/07/840721d1f349fb52d8c038787151581d-1.jpg', url: 'https://vdohls.com/ulsKhkGRzQY/video.m3u8' },
      { name: 'Cold War 1994 (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Cold-War-1994.webp', url: 'https://enjoy24cdn.com/hlsr2/dce5f0487b6f9b585920015624795864/master.m3u8' },
       { name: 'รักร้ายกลายร่าง (2026) ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Leviticus-%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%A3%E0%B9%88%E0%B8%B2%E0%B8%87.jpg', url: 'https://enjoy24cdn.com/hlsr2/eb17bd2f4ab0a609abda2be17850e70a/master.m3u8' },
