@@ -1,6 +1,31 @@
 export const series = [
 
-
+     {
+    name: ' ชู้รักอำพรางเลือด EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/08/The-Affair-Was-Just-The-Beginning-2026.webp',
+    url: 'https://vdohls.com/ey6ISvE3Qag/video.m3u8'
+  }, 
+          {
+    name: ' ชู้รักอำพรางเลือด EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/08/The-Affair-Was-Just-The-Beginning-2026.webp',
+    url: 'https://vdohls.com/rT1j6WXj9Ly/video.m3u8'
+  }, 
+     {
+    name: ' Murder Club Liar s Table EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Murder-Club-Liar-s-Table-2026.webp',
+    url: 'https://vdohls.com/ik6lbG8OFNC/video.m3u8'
+  }, 
+          {
+    name: ' Murder Club Liar s Table EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/07/Murder-Club-Liar-s-Table-2026.webp',
+    url: 'https://vdohls.com/3mFxYZ2VcO7/video.m3u8'
+  }, 
+    
+    
      {
     name: ' ตำนานนทีมืด EP.1',
     group: '🎬ซีรีย์2026',
