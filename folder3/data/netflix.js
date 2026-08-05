@@ -201,7 +201,25 @@ export const netflixMovies = [
     logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Agent-Kim-Reactivated-2026.webp',
     url: 'https://media.vdohls.com/LxQE-OOA_B0sP/video.m3u8'
   }, 
-    
+                        {
+    name: ' สายลับคิมกลับมาแล้ว-2026 ตอนที่8 ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Agent-Kim-Reactivated-2026.webp',
+    url: 'https://vdohls.com/K0LN-Q_nCAKvI/video.m3u8'
+  }, 
+                            {
+    name: ' สายลับคิมกลับมาแล้ว-2026 ตอนที่9 ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Agent-Kim-Reactivated-2026.webp',
+    url: 'https://vdohls.com/8SWl_lUEh-BTr/video.m3u8'
+  },        
+                                {
+    name: ' สายลับคิมกลับมาแล้ว-2026 ตอนที่10 ',
+    group: '🎬netflix2026',
+    logo: 'https://www.24hd.vip/wp-content/uploads/2026/06/Agent-Kim-Reactivated-2026.webp',
+    url: 'https://vdohls.com/GvG_RvIdlp-OK/playlist.m3u8'
+  },        
+           
     {
     name: ' เณรน้อยเจ้าอภินิหาร2-2026 ตอนที่1 ',
     group: '🎬netflix2026',
