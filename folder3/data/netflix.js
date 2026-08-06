@@ -1,5 +1,19 @@
 export const netflixMovies = [
 
+                 {
+    name: ' วัยหนุ่มคุกผี (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.siamzone.com/movie/pic/2026/ghostinthecell/poster1.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/eab5b9513eb8a49c8b8d4108444cb9a7/master.m3u8'
+  },
+           
+           {
+    name: ' รักหลอนซ่อนอสูร (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Raakaasa-%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%AB%E0%B8%A5%E0%B8%AD%E0%B8%99%E0%B8%8B%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%AD%E0%B8%AA%E0%B8%B9%E0%B8%A3.webp',
+    url: 'https://enjoy24cdn.com/hlsr2/da011e3b519e07cf90091ebf1aac1e2e/master.m3u8'
+  },
+           
            {
     name: ' เมื่อพายุมาเยือน 2026  ',
     group: '🎬netflix2026',
