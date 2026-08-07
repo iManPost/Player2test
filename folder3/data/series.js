@@ -1,44 +1,44 @@
 export const series = [
      {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.1',
+    name: 'EP.1 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/gkJNkSrZ1m/video.mp4/chunk.m3u8?nimblesessionid=5827212'
   }, 
           {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.2',
+    name: 'EP.2 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/1WavXaxRjb/video.mp4/chunk.m3u8?nimblesessionid=5827217'
   }, 
                {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.3',
+    name: 'EP.3 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/qkyPwvLAn5/video.mp4/chunk.m3u8?nimblesessionid=5827224'
   }, 
                     {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.4',
+    name: 'EP.4 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/oJOemTIaZm/video.mp4/chunk.m3u8?nimblesessionid=5827227'
   },
                          {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.5',
+    name: 'EP.5 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/8noy7nLm6y/video.mp4/chunk.m3u8?nimblesessionid=5827229'
   },
                               {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.6',
+    name: ' EP.6 ตระกูลแห่งมังกร ภาค 3',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/AjtZXYNo9/video.mp4/chunk.m3u8?nimblesessionid=5827230'
   },
                                    {
-    name: ' ตระกูลแห่งมังกร ภาค 3 EP.7',
+    name: 'EP.7 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
-    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    logo: 'https://image.tmdb.org/t/p/w300/jMNKB0rbLPUWNCpNUUbgOHf9HmY.jpg',
     url: 'https://series-cdn.team-indy.net:8443/vod/UhZsRR5uCR/video.mp4/chunk.m3u8?nimblesessionid=5827233'
   },
      {
