@@ -1,5 +1,120 @@
 export const series = [
-
+     {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/gkJNkSrZ1m/video.mp4/chunk.m3u8?nimblesessionid=5827212'
+  }, 
+          {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/1WavXaxRjb/video.mp4/chunk.m3u8?nimblesessionid=5827217'
+  }, 
+               {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/qkyPwvLAn5/video.mp4/chunk.m3u8?nimblesessionid=5827224'
+  }, 
+                    {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/oJOemTIaZm/video.mp4/chunk.m3u8?nimblesessionid=5827227'
+  },
+                         {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.5',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/8noy7nLm6y/video.mp4/chunk.m3u8?nimblesessionid=5827229'
+  },
+                              {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.6',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/AjtZXYNo9/video.mp4/chunk.m3u8?nimblesessionid=5827230'
+  },
+                                   {
+    name: ' ตระกูลแห่งมังกร ภาค 3 EP.7',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/UhZsRR5uCR/video.mp4/chunk.m3u8?nimblesessionid=5827233'
+  },
+     {
+    name: ' เก้าสกุล EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/M0x8Dpbr94/video.mp4/chunk.m3u8?nimblesessionid=5827180'
+  }, 
+          {
+    name: ' เก้าสกุล EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/V1E2elU6Az/video.mp4/chunk.m3u8?nimblesessionid=5827183'
+  }, 
+               {
+    name: ' เก้าสกุล EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/7AnkTaFfka/video.mp4/chunk.m3u8?nimblesessionid=5827193'
+  }, 
+                    {
+    name: ' เก้าสกุล EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/V2v6SgA0I/video.mp4/chunk.m3u8?nimblesessionid=5827196'
+  }, 
+          {
+    name: ' เก้าสกุล EP.5',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/mcH4z9PPpS/video.mp4/chunk.m3u8?nimblesessionid=5827198'
+  }, 
+          {
+    name: ' เก้าสกุล EP.6',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/NUuTUSjnry/video.mp4/chunk.m3u8?nimblesessionid=5827201'
+  }, 
+          {
+    name: ' เก้าสกุล EP.7',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Mystic-Nine-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/hqaxsfqprQ/video.mp4/chunk.m3u8?nimblesessionid=5827203'
+  }, 
+     
+     {
+    name: ' จั่นเจาตะลุยยุทธภพ EP.1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Zhan-Zhao-Adventures-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/UZ4te7Fw5A/video.mp4/chunk.m3u8?nimblesessionid=5827155'
+  }, 
+          {
+    name: ' จั่นเจาตะลุยยุทธภพ EP.2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Zhan-Zhao-Adventures-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/6GifiODg3E/video.mp4/chunk.m3u8?nimblesessionid=5827164'
+  }, 
+          {
+    name: ' จั่นเจาตะลุยยุทธภพ EP.3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Zhan-Zhao-Adventures-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/sMPanL5fyI/video.mp4/chunk.m3u8?nimblesessionid=5827166'
+  }, 
+              {
+    name: ' จั่นเจาตะลุยยุทธภพ EP.4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Zhan-Zhao-Adventures-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/dfN44lllUh/video.mp4/chunk.m3u8?nimblesessionid=5827173'
+  }, 
+                 {
+    name: ' จั่นเจาตะลุยยุทธภพ EP.5',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/07/Zhan-Zhao-Adventures-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/fA0LiXsF47/video.mp4/chunk.m3u8?nimblesessionid=5827178'
+  },    
+     
      {
     name: ' ชู้รักอำพรางเลือด EP.1',
     group: '🎬ซีรีย์2026',
