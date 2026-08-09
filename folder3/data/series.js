@@ -1,4 +1,22 @@
 export const series = [
+              {
+    name: 'EP.1 บุหงาซ่อนคม ',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/08/Blossoms-of-Power-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/yGgh5p7pX7/video.mp4/chunk.m3u8?nimblesessionid=5853682'
+  }, 
+              {
+    name: 'EP.2 บุหงาซ่อนคม ',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/08/Blossoms-of-Power-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/74OS4kSd4r/video.mp4/chunk.m3u8?nimblesessionid=5853707'
+  }, 
+                   {
+    name: 'EP.3 บุหงาซ่อนคม ',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://seriesindy.com/wp-content/uploads/2026/08/Blossoms-of-Power-TH-225x300.jpg',
+    url: 'https://series-cdn.team-indy.net:8443/vod/Zp5ZKol7Lt/video.mp4/chunk.m3u8?nimblesessionid=5853711'
+  }, 
      {
     name: 'EP.1 ตระกูลแห่งมังกร ภาค 3 ',
     group: '🎬ซีรีย์2026',
