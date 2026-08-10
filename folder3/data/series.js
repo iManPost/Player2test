@@ -1,17 +1,6 @@
 export const series = [
  
-     {
-    name: ' หมอติดเกาะ รักติดเธอ EP.1',
-    group: '🎬ซีรีย์2026',
-    logo: 'https://ok24hd.com/wp-content/uploads/2026/06/Doctor-on-the-Edge-2026.webp',
-    url: 'https://playhdhls.xyz/embed/w_h-D8L1AmAV2'
-  }, 
-      {
-    name: ' หมอติดเกาะ รักติดเธอ EP.2',
-    group: '🎬ซีรีย์2026',
-    logo: 'https://ok24hd.com/wp-content/uploads/2026/06/Doctor-on-the-Edge-2026.webp',
-    url: 'https://playhdhls.xyz/embed/G-0A3BkNrh_BT'
-  }, 
+
  
         {
     name: ' พลิกชะตาเหนือฟ้า ตอนที่1',
