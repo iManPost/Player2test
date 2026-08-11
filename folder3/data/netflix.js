@@ -8,22 +8,7 @@ export const netflixMovies = [
     url: 'https://enjoy24cdn.com/hlsr2/752be5c91dd475fbe290d9f4f7a40019/master.m3u8'
   },
 
-           
-                   {
-    name: ' เมื่อใจบ่มรัก (2026)  ',
-    group: '🎬netflix2026',
-    logo: 'https://www.123hdtv.com/wp-content/uploads/2026/02/Pavane-2026-เมื่อใจบ่มรัก.png',
-    url: 'https://main.24playerhd.com/newplaylist/56f4589f136fc33aaaa6efb4/56f4589f136fc33aaaa6efb4.m3u8'
-  },
-           
-                   {
-    name: ' คืนฝันก่อนฉันลืมเธอ (2026)  ',
-    group: '🎬netflix2026',
-    logo: 'https://www.123hdtv.com/wp-content/uploads/2026/02/Even-if-This-Love-Disappears-from-the-World-Tonight-2025-คืนฝันก่อนฉันลืมเธอ.png',
-    url: 'https://main.24playerhd.com/newplaylist/2b778f050b5c464e12300b90/2b778f050b5c464e12300b90.m3u8'
-  },
-
-           
+            
            
   {
     name: ' วัยหนุ่มคุกผี (2026)  ',
@@ -96,31 +81,31 @@ export const netflixMovies = [
     {
     name: ' หน่วยจู่โจมมือพระกาฬ 2026 ตอนที่1 ',
     group: '🎬netflix2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/07/ymjYmuHG4Af93fcoF0NKwx9Rovb-scaled-2-683x1024.jpg',
+    logo: 'https://image.tmdb.org/t/p/original/ymjYmuHG4Af93fcoF0NKwx9Rovb.jpg',
     url: 'https://media.vdohls.com/rKK-AqO_IqHV9/video.m3u8'
   },
     {
     name: ' หน่วยจู่โจมมือพระกาฬ 2026 ตอนที่2 ',
     group: '🎬netflix2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/07/ymjYmuHG4Af93fcoF0NKwx9Rovb-scaled-2-683x1024.jpg',
+    logo: 'https://image.tmdb.org/t/p/original/ymjYmuHG4Af93fcoF0NKwx9Rovb.jpg',
     url: 'https://media.vdohls.com/hPd_gUrcfW-DX/video.m3u8'
   },
     {
     name: ' หน่วยจู่โจมมือพระกาฬ 2026 ตอนที่3 ',
     group: '🎬netflix2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/07/ymjYmuHG4Af93fcoF0NKwx9Rovb-scaled-2-683x1024.jpg',
+    logo: 'https://image.tmdb.org/t/p/original/ymjYmuHG4Af93fcoF0NKwx9Rovb.jpg',
     url: 'https://media.vdohls.com/Uvz_6WA-Ief85/video.m3u8'
   },
     {
     name: ' หน่วยจู่โจมมือพระกาฬ 2026 ตอนที่4 ',
     group: '🎬netflix2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/07/ymjYmuHG4Af93fcoF0NKwx9Rovb-scaled-2-683x1024.jpg',
+    logo: 'https://image.tmdb.org/t/p/original/ymjYmuHG4Af93fcoF0NKwx9Rovb.jpg',
     url: 'https://media.vdohls.com/G_r2e0-22Y11W/video.m3u8'
   },
         {
     name: ' หน่วยจู่โจมมือพระกาฬ 2026 ตอนที่5 ',
     group: '🎬netflix2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/07/ymjYmuHG4Af93fcoF0NKwx9Rovb-scaled-2-683x1024.jpg',
+    logo: 'https://image.tmdb.org/t/p/original/ymjYmuHG4Af93fcoF0NKwx9Rovb.jpg',
     url: 'https://media.vdohls.com/usmSN7_A-pmMm/video.m3u8'
   },
             {
