@@ -7,6 +7,24 @@ export const netflixMovies = [
     logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Last-House-%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%B2%E0%B8%A2.jpg',
     url: 'https://enjoy24cdn.com/hlsr2/752be5c91dd475fbe290d9f4f7a40019/master.m3u8'
   },
+
+           
+                   {
+    name: ' เมื่อใจบ่มรัก (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.123hdtv.com/wp-content/uploads/2026/02/Pavane-2026-เมื่อใจบ่มรัก.png',
+    url: 'https://main.24playerhd.com/newplaylist/56f4589f136fc33aaaa6efb4/56f4589f136fc33aaaa6efb4.m3u8'
+  },
+           
+                   {
+    name: ' คืนฝันก่อนฉันลืมเธอ (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://www.123hdtv.com/wp-content/uploads/2026/02/Even-if-This-Love-Disappears-from-the-World-Tonight-2025-คืนฝันก่อนฉันลืมเธอ.png',
+    url: 'https://main.24playerhd.com/newplaylist/2b778f050b5c464e12300b90/2b778f050b5c464e12300b90.m3u8'
+  },
+
+           
+           
   {
     name: ' วัยหนุ่มคุกผี (2026)  ',
     group: '🎬netflix2026',
