@@ -1,5 +1,18 @@
  export const anime = [
 
+
+         {
+    name: ' เกิดใหม่ทั้งทีก็เป็นสไลม์2026',
+    group: 'Anime',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/That-Time-I-Got-Reincarnated-as-a-Slime-the-Movie-Tears-of-the-Azure-Sea-2026-%E0%B9%80%E0%B8%81%E0%B8%B4%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B8%97%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B8%81%E0%B9%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%AA%E0%B9%84%E0%B8%A5%E0%B8%A1%E0%B9%8C%E0%B9%84%E0%B8%9B%E0%B8%8B%E0%B8%B0%E0%B9%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%B9%E0%B8%9F%E0%B8%A7%E0%B8%B5%E0%B9%88-%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%95%E0%B8%B2%E0%B9%81%E0%B8%AB.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/3a92c38567ffc989bcfeaed5b22a0f8e/master.m3u8'
+  },
+         {
+    name: ' เดอะริบบิ้นฮีโร่2026',
+    group: 'Anime',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Ribbon-Hero-%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A3%E0%B8%B4%E0%B8%9A%E0%B8%9A%E0%B8%B4%E0%B9%89%E0%B8%99%E0%B8%AE%E0%B8%B5%E0%B9%82%E0%B8%A3%E0%B9%88.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/0a07a593df1d0876f01fbd5e8cda19fe/master.m3u8'
+  },
        {
     name: ' ห้องเรียนลอบสังหาร เดอะ มูฟวี่',
     group: 'Anime',
