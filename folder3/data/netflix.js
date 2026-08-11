@@ -1,6 +1,13 @@
 export const netflixMovies = [
 
-                 {
+           
+                   {
+    name: ' House-บ้านหลังสุดท้าย (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Last-House-%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%B2%E0%B8%A2.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/752be5c91dd475fbe290d9f4f7a40019/master.m3u8'
+  },
+  {
     name: ' วัยหนุ่มคุกผี (2026)  ',
     group: '🎬netflix2026',
     logo: 'https://www.siamzone.com/movie/pic/2026/ghostinthecell/poster1.jpg',
