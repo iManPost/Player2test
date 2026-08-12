@@ -1,6 +1,31 @@
 export const series = [
  
 
+         {
+    name: ' ฝ่าบาททรงพระเจริญหมื่นปี ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://77-hd.com/wp-content/uploads/2026/08/31nFRRsQQnCti8TiBuiEgNKYaZp-scaled-2.jpg',
+    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a71e707b8f7d71523fcc339/_sb/_images.m3u8'
+  },
+         {
+    name: ' ฝ่าบาททรงพระเจริญหมื่นปี ตอนที่2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://77-hd.com/wp-content/uploads/2026/08/31nFRRsQQnCti8TiBuiEgNKYaZp-scaled-2.jpg',
+    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a71e707b8f7d71523fcc33b/_sb/_images.m3u8'
+  },
+         {
+    name: ' Dragon Season 3 ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
+    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a73667d687adfb19941feee/_sb/_images.m3u8'
+  },
+          {
+    name: ' Dragon Season 3 ตอนที่2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
+    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a73667d687adfb19941feed/_sb/_images.m3u8'
+  },
+ 
  
         {
     name: ' พลิกชะตาเหนือฟ้า ตอนที่1',
