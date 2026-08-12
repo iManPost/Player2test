@@ -12,7 +12,7 @@ export const series = [
     name: ' ท่านประธานกำมะลอ ตอนที่1',
     group: '🎬ซีรีย์2026',
     logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
-    url: 'https://s25-wyl7.s1q2105.com/hls/aODKyqczoxJR7YZFQdtxTSsGwhXOsQfq/index_1920x1080.m3u8?token=f23af17fbc20d3854508bf3499dc36ac-1786551642-2a06%3A98c0%3A3600%3A%3A103-d6070f907d792e18cf88c2937d826c6f55e28ade5bdad145070a78358bc6a5a7'
+    url: 'https://moddepp.com/api/stream/d7828b3251616b010941a58940b63c47/index.m3u8?token=8f7c4f128c219f74ef0c4488e16ed835a1c79c440bdbc12311fc8b68f3f4e4c7&expires=1786540810&parent=1112hdss.com'
   },
  
  
