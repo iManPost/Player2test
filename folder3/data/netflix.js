@@ -1,6 +1,18 @@
 export const netflixMovies = [
-
+                      
            
+           {
+    name: ' ตั๊กแตนนักฆ่า  ',
+    group: '🎬netflix2026',
+    logo: 'https://movie911hd.com/wp-content/uploads/2026/03/Mantis__2025.jpg',
+    url: 'https://fastfastcdn.com/hlsr2/b278f3fd1d86e3d6c39ac75368f9f6cc/master.m3u8'
+  },     
+                         {
+    name: ' เกมจารชนคนในเงา (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://movie911hd.com/wp-content/uploads/2026/04/Humint__2026.jpg',
+    url: 'https://fastfastcdn.com/hlsr2/bb1566c3e90e5103b722f690aa93b83e/master.m3u8'
+  },     
                    {
     name: ' House-บ้านหลังสุดท้าย (2026)  ',
     group: '🎬netflix2026',
