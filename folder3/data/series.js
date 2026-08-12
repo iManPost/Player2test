@@ -5,32 +5,14 @@ export const series = [
            {
     name: ' ท่านประธานกำมะลอ ตอนที่2',
     group: '🎬ซีรีย์2026',
-    logo: 'https://77-hd.com/wp-content/uploads/2026/07/qFxbrHvNq5tn9SCBq3aKPgaGfyO-scaled-1.jpg',
-    url: 'https://reverse-lb2-dlss.deeppacketinspection3bbreverse.space/hls/6a722e27b8f7d71523fcc9c0/_sb/_images.m3u8'
+    logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
+    url: 'https://p1-s3-d1.s1q2105.com/hls/strUhFdUdiAsbWCmqVFzxprBpkY6dqot/index_1920x1080.m3u8?token=93dc8335b61f173726264a145c6ac8ef-1786551741-2a06%3A98c0%3A3600%3A%3A103-085c34f258d09effaa0489e02198ebac6eb2cd12e41d3c826a51ff632f7e6aa0'
   },
            {
     name: ' ท่านประธานกำมะลอ ตอนที่1',
     group: '🎬ซีรีย์2026',
-    logo: 'https://77-hd.com/wp-content/uploads/2026/07/qFxbrHvNq5tn9SCBq3aKPgaGfyO-scaled-1.jpg',
-    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a722e27b8f7d71523fcc9c1/_sb/_images.m3u8'
-  },
-           {
-    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่3',
-    group: '🎬ซีรีย์2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
-    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a7392cf687adfb1994202a9/_sb/_images.m3u8'
-  },
-          {
-    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่2',
-    group: '🎬ซีรีย์2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
-    url: 'https://reverse-lb2-dlss.deeppacketinspection3bbreverse.space/hls/6a7392cf687adfb1994202aa/_sb/_images.m3u8'
-  },
-          {
-    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่1',
-    group: '🎬ซีรีย์2026',
-    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
-    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a7392cf687adfb1994202ab/_sb/_images.m3u8'
+    logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
+    url: 'https://s25-wyl7.s1q2105.com/hls/aODKyqczoxJR7YZFQdtxTSsGwhXOsQfq/index_1920x1080.m3u8?token=f23af17fbc20d3854508bf3499dc36ac-1786551642-2a06%3A98c0%3A3600%3A%3A103-d6070f907d792e18cf88c2937d826c6f55e28ade5bdad145070a78358bc6a5a7'
   },
  
  
