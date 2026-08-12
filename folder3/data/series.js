@@ -1,29 +1,36 @@
 export const series = [
- 
 
-         {
-    name: ' ฝ่าบาททรงพระเจริญหมื่นปี ตอนที่1',
+
+
+           {
+    name: ' ท่านประธานกำมะลอ ตอนที่2',
     group: '🎬ซีรีย์2026',
-    logo: 'https://77-hd.com/wp-content/uploads/2026/08/31nFRRsQQnCti8TiBuiEgNKYaZp-scaled-2.jpg',
-    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a71e707b8f7d71523fcc339/_sb/_images.m3u8'
+    logo: 'https://77-hd.com/wp-content/uploads/2026/07/qFxbrHvNq5tn9SCBq3aKPgaGfyO-scaled-1.jpg',
+    url: 'https://reverse-lb2-dlss.deeppacketinspection3bbreverse.space/hls/6a722e27b8f7d71523fcc9c0/_sb/_images.m3u8'
   },
-         {
-    name: ' ฝ่าบาททรงพระเจริญหมื่นปี ตอนที่2',
+           {
+    name: ' ท่านประธานกำมะลอ ตอนที่1',
     group: '🎬ซีรีย์2026',
-    logo: 'https://77-hd.com/wp-content/uploads/2026/08/31nFRRsQQnCti8TiBuiEgNKYaZp-scaled-2.jpg',
-    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a71e707b8f7d71523fcc33b/_sb/_images.m3u8'
+    logo: 'https://77-hd.com/wp-content/uploads/2026/07/qFxbrHvNq5tn9SCBq3aKPgaGfyO-scaled-1.jpg',
+    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a722e27b8f7d71523fcc9c1/_sb/_images.m3u8'
   },
-         {
-    name: ' Dragon Season 3 ตอนที่1',
+           {
+    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่3',
     group: '🎬ซีรีย์2026',
     logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
-    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a73667d687adfb19941feee/_sb/_images.m3u8'
+    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a7392cf687adfb1994202a9/_sb/_images.m3u8'
   },
           {
-    name: ' Dragon Season 3 ตอนที่2',
+    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่2',
     group: '🎬ซีรีย์2026',
     logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
-    url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a73667d687adfb19941feed/_sb/_images.m3u8'
+    url: 'https://reverse-lb2-dlss.deeppacketinspection3bbreverse.space/hls/6a7392cf687adfb1994202aa/_sb/_images.m3u8'
+  },
+          {
+    name: ' สะดุดรักกุ๊กกุ๊กกู๋ ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://25-hd.com/wp-content/uploads/2026/02/jMNKB0rbLPUWNCpNUUbgOHf9HmY-scaled-1-683x1024.jpg',
+    url: 'https://reverse-lb3-dlss.24hdfree.online/hls/6a7392cf687adfb1994202ab/_sb/_images.m3u8'
   },
  
  
