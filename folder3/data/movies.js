@@ -1,5 +1,5 @@
 export const movies = [
-
+    { name: 'เกมพร้อมตาย2 พากย์ไทย (2026)  ', group: '🎬หนังใหม่2026', logo: 'https://moviesdoofree.com/wp-content/uploads/2026/07/2-4.jpg', url: 'https://m3u8data.com/movie/M15848.mp4/chunk.m3u8' },     
        { name: 'ฆาตกรโรคจิต (2026)  ', group: '🎬หนังใหม่2026', logo: 'https://77-hd.com/wp-content/uploads/2026/04/8xq9LIyYbmHxrr2NUXthbCNtqHA-scaled-1.jpg', url: 'https://enjoy24cdn.com/hlsr2/752be5c91dd475fbe290d9f4f7a40019/master.m3u8' },     
        { name: 'บ้านหลังสุดท้าย (2026)  ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/The-Last-House-%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%B2%E0%B8%A2.jpg', url: 'https://reverse-lb3-dlss.cdn-osx.space/hls/6a77a7706bae4576e818e9c8/_sb/_images.m3u8' }, 
 { name: 'เกมนรก-สัตว์เดือด (2026)  ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Beast-Race-%E0%B9%80%E0%B8%81%E0%B8%A1%E0%B8%99%E0%B8%A3%E0%B8%81-%E0%B8%AA%E0%B8%B1%E0%B8%95%E0%B8%A7%E0%B9%8C%E0%B9%80%E0%B8%94%E0%B8%B7%E0%B8%AD%E0%B8%94.jpg', url: 'https://enjoy24cdn.com/hlsr2/7b7b21b27513e05727d857feb41afa56/master.m3u8' }, 
