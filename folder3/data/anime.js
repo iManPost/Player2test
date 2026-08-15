@@ -1,6 +1,17 @@
  export const anime = [
 
-
+              {
+    name: ' ดาบพิฆาตอสูร2026',
+    group: 'Anime',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Demon-Slayer-Kimetsu-no-Yaiba-Infinity-Castle-%E0%B8%94%E0%B8%B2%E0%B8%9A%E0%B8%9E%E0%B8%B4%E0%B8%86%E0%B8%B2%E0%B8%95%E0%B8%AD%E0%B8%AA%E0%B8%B9%E0%B8%A3-%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%9B%E0%B8%A3%E0%B8%B2%E0%B8%AA%E0%B8%B2%E0%B8%97%E0%B9%84%E0%B8%A3%E0%B9%89%E0%B8%82%E0%B8%AD%E0%B8%9A%E0%B9%80%E0%B8%82%E0%B8%95.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/11f57bff6eb54f13ef83eaa9300a6259/master.m3u8'
+  },    
+  {
+    name: ' มิลกี้ ซับเวย์2026',
+    group: 'Anime',
+    logo: 'https://madaboutmoviez.com/wp-content/uploads/Milky-Subway-The-Galactic-Limited-Express-to-the-Theater-%E0%B8%A1%E0%B8%B4%E0%B8%A5%E0%B8%81%E0%B8%B5%E0%B9%89-%E0%B8%8B%E0%B8%B1%E0%B8%9A%E0%B9%80%E0%B8%A7%E0%B8%A2%E0%B9%8C-%E0%B8%A3%E0%B8%96%E0%B9%84%E0%B8%9F%E0%B8%94%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%97%E0%B8%B0%E0%B8%A5%E0%B8%B8%E0%B8%81%E0%B8%B2%E0%B9%81%E0%B8%A5%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B8%B5-%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0-%E0%B8%A1%E0%B8%B9%E0%B8%9F%E0%B8%A7%E0%B8%B5%E0%B9%88.jpg',
+    url: 'https://enjoy24cdn.com/hlsr2/eb32ff58206708af160588dfd9c85c32/master.m3u8'
+  },
          {
     name: ' เกิดใหม่ทั้งทีก็เป็นสไลม์2026',
     group: 'Anime',
