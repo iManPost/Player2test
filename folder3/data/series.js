@@ -1,18 +1,23 @@
 export const series = [
 
 
-
            {
-    name: ' ท่านประธานกำมะลอ ตอนที่2',
+    name: ' รักติดหนึบ Our Sticky Love ตอนที่3',
     group: '🎬ซีรีย์2026',
     logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
-    url: 'https://p1-s3-d1.s1q2105.com/hls/strUhFdUdiAsbWCmqVFzxprBpkY6dqot/index_1920x1080.m3u8?token=93dc8335b61f173726264a145c6ac8ef-1786551741-2a06%3A98c0%3A3600%3A%3A103-085c34f258d09effaa0489e02198ebac6eb2cd12e41d3c826a51ff632f7e6aa0'
+    url: 'https://s25-wyl6.s1q2105.com/hls/flTVM1Pp0wh4jXbR8qtNjy9rKZu5MyvU/index_1920x1080.m3u8'
   },
            {
-    name: ' ท่านประธานกำมะลอ ตอนที่1',
+    name: ' รักติดหนึบ Our Sticky Love ตอนที่2',
     group: '🎬ซีรีย์2026',
     logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
-    url: 'https://moddepp.com/api/stream/d7828b3251616b010941a58940b63c47/index.m3u8?token=8f7c4f128c219f74ef0c4488e16ed835a1c79c440bdbc12311fc8b68f3f4e4c7&expires=1786540810&parent=1112hdss.com'
+    url: 'https://s25-wyl6.s1q2105.com/hls/xCcdbIYwchNwdVfxPdFFtQxMvHJw8qH5/index_1920x1080.m3u8'
+  },
+           {
+    name: ' รักติดหนึบ Our Sticky Love ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/8c18f4f3-02f6-4b78-a1da-30f9d7b0b36f.webp',
+    url: 'https://s25-wyl6.s1q2105.com/hls/NAKPEwmnup8i74LnHnbntzCXzhLcXPlI/index_1920x1080.m3u8'
   },
  
  
