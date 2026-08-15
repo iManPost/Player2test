@@ -1,5 +1,12 @@
 export const netflixMovies = [
-            
+
+
+    {
+    name: ' สลับร่างผจญภัย (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://allinhd.com/wp-content/uploads/2026/05/Swapped.jpg',
+    url: 'https://fastfastcdn.com/hlsr2/1a0549e0c60be1ba800c55f7966d722f/master.m3u8'
+  },           
   {
     name: ' อควาเรียมสำหรับคน หมึก (2026)  ',
     group: '🎬netflix2026',
