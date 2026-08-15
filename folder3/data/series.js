@@ -1,16 +1,58 @@
 export const series = [
 
-
+                     {
+    name: ' คุณชายสายสืบ ซีซั่น1 ตอนที่3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/db09deb2-64a2-481c-aa2f-bc1028407daa.webp',
+    url: 'https://p1-s100-d3.s1q2105.com/hls/D3mwYENUxI99drmV09DbyOsDgQfBCj8O/index_1274x720.m3u8'
+  },   
+                     {
+    name: ' คุณชายสายสืบ ซีซั่น1 ตอนที่2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/db09deb2-64a2-481c-aa2f-bc1028407daa.webp',
+    url: 'https://p1-s100-d3.s1q2105.com/hls/KEK7FFllpYCQ9ADStvVxdeISswGmcPNA/index_1274x720.m3u8'
+  },   
+           
+                     {
+    name: ' คุณชายสายสืบ ซีซั่น1 ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/db09deb2-64a2-481c-aa2f-bc1028407daa.webp',
+    url: 'https://p1-s100-d3.s1q2105.com/hls/Cv3NTMKECHo2SSm0TrhmnPUXAEPHHt3B/index_1274x720.m3u8'
+  },          
+           {
+    name: ' วสันต์รักผลิบาน ตอนที่4',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/e8e093b9-02a7-408a-ab4c-7d9a57f1c104.webp',
+    url: 'https://s25-wyl6.s1q2105.com/hls/yjOsEQ2e8RxBjfaX6KyMcufsLSqJ5BY3/index_1920x820.m3u8'
+  },   
+                 {
+    name: ' วสันต์รักผลิบาน ตอนที่3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/e8e093b9-02a7-408a-ab4c-7d9a57f1c104.webp',
+    url: 'https://s25-wyl6.s1q2105.com/hls/ZfGN0we8NYCsMnaJ51ahoIb7YMeSycM1/index_1920x820.m3u8'
+  },   
+                 {
+    name: ' วสันต์รักผลิบาน ตอนที่2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/e8e093b9-02a7-408a-ab4c-7d9a57f1c104.webp',
+    url: 'https://s25-wyl6.s1q2105.com/hls/HmjwOcVBpd4ZbOJ5jGdAjfEHeSAkba8d/index_1920x820.m3u8'
+  },     
+           {
+    name: ' วสันต์รักผลิบาน ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/e8e093b9-02a7-408a-ab4c-7d9a57f1c104.webp',
+    url: 'https://s25-wyl5.97bf1.com/hls/4xcZiq9xWfOqAaoHTWNAUbswyr62G4FV/index_1920x820.m3u8'
+  },
            {
     name: ' รักติดหนึบ Our Sticky Love ตอนที่3',
     group: '🎬ซีรีย์2026',
-    logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
+    logo: 'https://upde.cc/storage/title-posters/8c18f4f3-02f6-4b78-a1da-30f9d7b0b36f.webp',
     url: 'https://s25-wyl6.s1q2105.com/hls/flTVM1Pp0wh4jXbR8qtNjy9rKZu5MyvU/index_1920x1080.m3u8'
   },
            {
     name: ' รักติดหนึบ Our Sticky Love ตอนที่2',
     group: '🎬ซีรีย์2026',
-    logo: 'https://upde.cc/storage/title-posters/bd854e69-95fe-4fec-9829-c2e9ac83a661.webp',
+    logo: 'https://upde.cc/storage/title-posters/8c18f4f3-02f6-4b78-a1da-30f9d7b0b36f.webp',
     url: 'https://s25-wyl6.s1q2105.com/hls/xCcdbIYwchNwdVfxPdFFtQxMvHJw8qH5/index_1920x1080.m3u8'
   },
            {
