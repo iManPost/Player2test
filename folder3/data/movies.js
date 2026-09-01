@@ -1,4 +1,6 @@
 export const movies = [
+   { name: 'แฝดล้างเพลิงแค้น 2026  ', group: '🎬หนังใหม่2026', logo: 'https://cdn.imgferry.com/uploads/2026/08/bf5a9c2cc71156b0d7b8f78750255b0f.jpg', url: 'https://vod1.stream25.com/Is-God-Is-2026-tha.mp4.m3u8' },
+   { name: 'คำสารภาพของหมอผี 2026  ', group: '🎬หนังใหม่2026', logo: 'https://madaboutmoviez.com/wp-content/uploads/Confessions-of-a-Shaman-%E0%B8%84%E0%B8%B3%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B8%9C%E0%B8%B5.jpg', url: 'https://enjoy24cdn.com/hlsr2/a339dfb143bb3e352756a7b85ab0b411/master.m3u8' },
    { name: 'Lucky Strike 2026  ', group: '🎬หนังใหม่2026', logo: 'https://cdn.imgferry.com/uploads/2026/08/02e40957c58f910f5c041242b1d89966.jpg', url: 'https://vod1.stream25.com/Lucky-Strike-2026-sub.mp4.m3u8' },
 { name: 'เผชิญหน้า เอล ชาโป 2026  ', group: '🎬หนังใหม่2026', logo: 'https://cdn.imgferry.com/uploads/2026/08/60582806b911c5be51c8d585bc5da168-1.jpg', url: 'https://vod1.stream25.com/Facing-El-Chapo-2026-tha.mp4.m3u8' },
    { name: 'คนระห่ำห้ามรอด 2026  ', group: '🎬หนังใหม่2026', logo: 'https://storage.googleapis.com/sahamongkolfilm-media/2026/07/94012014-mutiny-movie-poster-th.jpg', url: 'https://master.steamhls88.com/hlsr2/ab70e85898bea0a1a3a4d502a73c3114/master.m3u8' },
