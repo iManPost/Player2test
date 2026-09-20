@@ -1,5 +1,27 @@
 export const series = [
 
+     
+                       {
+    name: '  ฉาวโฉ่โชซอน ตอนที่3',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/decc411d-950b-4169-b489-9b54d6bc8eca.webp',
+    url: 'https://s14-o3.97bf1.com/hls/TVNcqyRDBPnAypWN2UDHTrfTaRFFPPSw/index_1920x1080.m3u8'
+  }, 
+  {
+    name: '  ฉาวโฉ่โชซอน ตอนที่2',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/decc411d-950b-4169-b489-9b54d6bc8eca.webp',
+    url: 'https://s7-t25.97bf1.com/hls/XrGrRUpfd0uolLl6pCFubu9VpzPk6FpO/index_1280x720.m3u8'
+  },   
+
+                     {
+    name: '  ฉาวโฉ่โชซอน ตอนที่1',
+    group: '🎬ซีรีย์2026',
+    logo: 'https://upde.cc/storage/title-posters/decc411d-950b-4169-b489-9b54d6bc8eca.webp',
+    url: 'https://s14-o3.97bf1.com/hls/veFrspA5kyjLxmqGOPlfeZzK99zueVAY/index_1920x1080.m3u8'
+  },   
+
+  
                      {
     name: ' คุณชายสายสืบ ซีซั่น1 ตอนที่3',
     group: '🎬ซีรีย์2026',
