@@ -1,4 +1,5 @@
 export const movies = [
+ { name: 'มหาภัยสุดถนนโอ๊ค 2026  ', group: '🎬หนังใหม่2026', logo: 'https://moviesdoofree.com/wp-content/uploads/2026/09/1-6.jpg', url: 'https://m3u8data.com/movie/M15923.mp4/chunk.m3u8' },
  { name: 'เห้งเจียแจ๊ส 2026  ', group: '🎬หนังใหม่2026', logo: 'https://moviesdoofree.com/wp-content/uploads/2026/09/4-1.jpg', url: 'https://m3u8data.com/movie/M15919.mp4/chunk.m3u8' },
  { name: 'The Dog Stars 2026  ', group: '🎬หนังใหม่2026', logo: 'https://moviesdoofree.com/wp-content/uploads/2026/09/2-3-scaled.jpg', url: 'https://m3u8data.com/movie/M15914.mp4/chunk.m3u8' },
    { name: 'The Mongoose 2026  ', group: '🎬หนังใหม่2026', logo: 'https://moviesdoofree.com/wp-content/uploads/2026/09/2.jpg', url: 'https://m3u8data.com/movie/M15906.mp4/chunk.m3u8' },
