@@ -1,6 +1,11 @@
 export const netflixMovies = [
 
-
+    {
+    name: ' วิวาห์สุขสันต์ (2026)  ',
+    group: '🎬netflix2026',
+    logo: 'https://allinhd.com/wp-content/uploads/2026/06/Double-Happiness.jpg',
+    url: 'https://fastfastcdn.com/hlsr2/9ea8f29b3160e95f42d384f41efb1740/master.m3u8'
+  },  
     {
     name: ' สลับร่างผจญภัย (2026)  ',
     group: '🎬netflix2026',
